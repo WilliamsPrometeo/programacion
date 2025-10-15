@@ -52,7 +52,7 @@ README.md
 
 ## 🧠 Ejemplos destacados
 
-- 🔢 Calculadora con `switch`  
+- 🔢 clases.Calculadora con `switch`  
 - 🎲 Juego “Adivina el número”
 - 🟪 Dibujar figuras con bucles
 - 📬 Validaciones de entrada con `Scanner`  
