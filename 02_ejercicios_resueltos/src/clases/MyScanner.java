@@ -56,4 +56,16 @@ public class MyScanner {
         return input.charAt(0);
     }
 
+    public String pideTexto(String mensaje) {
+        String texto;
+        do {
+            System.out.println(mensaje);
+            texto = sc.nextLine();
+            if (texto.isEmpty()) {
+                System.out.println("Error: el campo no puede estar vacio.");
+            }
+        } while (texto.isEmpty());
+        return texto;
+    }
+
 }
