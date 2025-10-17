@@ -3,9 +3,9 @@ package clases;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Calculadora {
+public class MenuCalculadora {
 
-    public Calculadora() {
+    public MenuCalculadora() {
     }
 
     public void menu() {

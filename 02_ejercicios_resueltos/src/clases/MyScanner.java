@@ -27,6 +27,23 @@ public class MyScanner {
         return n;
     }
 
+    public double pedirDecimal(String mns) {
+        double num = -1;
+        boolean flag = true;
+        while (flag) {
+            try {
+                System.out.printf(mns);
+                num = sc.nextDouble();
+                sc.nextLine();
+                flag = false;
+            }catch (InputMismatchException e) {
+                System.out.println("Eso no es número!");
+                sc.nextLine();
+            }
+        }
+        return num;
+    }
+
     public String pedirSoloTexto(String texto) {
         String input;
         boolean valido;
@@ -66,6 +83,10 @@ public class MyScanner {
             }
         } while (texto.isEmpty());
         return texto;
+    }
+
+    public void cerrar() {
+        sc.close();
     }
 
 }
