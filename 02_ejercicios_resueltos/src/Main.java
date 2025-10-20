@@ -1,6 +1,5 @@
 import bibliotecas.clases.Biblioteca;
 import bibliotecas.clases.Libro;
-import clases.MyScanner;
 
 import java.util.ArrayList;
 

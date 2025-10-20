@@ -1,5 +1,3 @@
-package clases;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

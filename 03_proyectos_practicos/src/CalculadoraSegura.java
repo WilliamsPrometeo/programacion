@@ -1,8 +1,5 @@
 import clases.Calculadora;
-import clases.MyScanner;
 import exceptions.DivisionPorCeroException;
-
-import java.util.InputMismatchException;
 
 
 public class CalculadoraSegura {
