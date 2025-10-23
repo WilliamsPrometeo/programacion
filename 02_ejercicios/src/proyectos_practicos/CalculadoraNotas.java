@@ -1,4 +1,4 @@
-package ejercicios;
+package proyectos_practicos;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

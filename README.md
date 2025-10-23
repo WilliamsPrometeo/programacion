@@ -1,7 +1,7 @@
 # 💻 Repositorio de Programación – DAM / DAW
 
 Bienvenid@ 👋  
-Este repositorio contiene los **materiales, ejercicios y proyectos prácticos** del módulo de **Programación** en los ciclos de **DAM** (Desarrollo de Aplicaciones Multiplataforma) y **DAW** (Desarrollo de Aplicaciones Web).  
+Este repositorio contiene los **materiales, proyectos_practicos y proyectos prácticos** del módulo de **Programación** en los ciclos de **DAM** (Desarrollo de Aplicaciones Multiplataforma) y **DAW** (Desarrollo de Aplicaciones Web).  
 
 Aquí encontrarás desde las primeras clases teóricas hasta proyectos completos en Java.
 
@@ -19,7 +19,7 @@ README.md
 ### 🔹 Descripción de carpetas
 
 - **01_clases/** → Contiene materiales de clase, ejemplos de código y presentaciones.  
-- **02_ejercicios_resueltos/** → Incluye ejercicios prácticos ya resueltos y comentados.  
+- **02_ejercicios_resueltos/** → Incluye proyectos_practicos prácticos ya resueltos y comentados.  
 - **03_proyectos_practicos/** → Reúne pequeños proyectos o prácticas integradoras desarrolladas en clase.
 
 ---
@@ -45,7 +45,7 @@ README.md
    ```
 
 2. **Abre el proyecto** en tu IDE (IntelliJ IDEA, Eclipse, VS Code…).  
-3. **Explora las carpetas** para acceder a los distintos temas o ejercicios.  
+3. **Explora las carpetas** para acceder a los distintos temas o proyectos_practicos.  
 4. **Ejecuta y modifica** los ejemplos para reforzar tu aprendizaje.
 
 ---

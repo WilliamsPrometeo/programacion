@@ -1,5 +1,5 @@
-import bibliotecas.clases.Biblioteca;
-import bibliotecas.clases.Libro;
+import clases.Biblioteca;
+import clases.Libro;
 
 import java.util.ArrayList;
 
