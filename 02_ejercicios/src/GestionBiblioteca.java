@@ -7,7 +7,7 @@ public class GestionBiblioteca {
 
     private static final MyScanner sc = new MyScanner();
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         menuBiblioteca(obtenerBiblioteca());
     }
 

@@ -11,9 +11,19 @@ public class Calculadora {
         }
         return a / b;
     }
+
     private static int suma(int a, int b) {
         return a + b;
     }
+
+    private static int suma(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    private static double suma(double a, double b) {
+        return a + b;
+    }
+
     private static int resta(int a, int b) {
         return a - b;
     }

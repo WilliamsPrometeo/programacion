@@ -18,6 +18,12 @@ public class Persona {
         this.dinero_en_banco = 1000;
     }
 
+    public Persona(int edad, String nombre) {
+        this.edad = edad;
+        this.nombre = nombre;
+        this.dinero_en_banco = 1000;
+    }
+
     public String getNombre() {
         return nombre;
     }
