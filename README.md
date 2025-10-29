@@ -40,7 +40,7 @@ README.md
 
 1. **Clona o descarga** el repositorio:
    ```bash
-   git clone [https://github.com/tu-usuario/programacion.git](https://github.com/WilliamsPrometeo/programacion.git)
+   git clone https://github.com/WilliamsPrometeo/programacion.git
    ```
 
 2. **Abre el proyecto** en tu IDE (IntelliJ IDEA, Eclipse, VS Code…).  
