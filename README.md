@@ -11,8 +11,7 @@ Aquí encontrarás desde las primeras clases teóricas hasta proyectos completos
 
 ```
 /01_clases
-/02_ejercicios_resueltos
-/03_proyectos_practicos
+/02_ejercicios
 README.md
 ```
 
@@ -41,7 +40,7 @@ README.md
 
 1. **Clona o descarga** el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/programacion.git
+   git clone [https://github.com/tu-usuario/programacion.git](https://github.com/WilliamsPrometeo/programacion.git)
    ```
 
 2. **Abre el proyecto** en tu IDE (IntelliJ IDEA, Eclipse, VS Code…).  
