@@ -32,7 +32,9 @@ README.md
 ✅ Bucles (`for`, `while`, `do...while`)  
 ✅ Métodos y modularización del código  
 ✅ Ejercicios prácticos  
-✅ Mini proyectos  
+✅ Mini proyectos
+✅ Clases y objetos
+✅ Introducción a POO
 
 ---
 
