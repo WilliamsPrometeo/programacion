@@ -40,7 +40,7 @@ public class MainJuego {
     }
 
     public static void partida(Personaje pj1, Personaje pj2) {
-        int turnos = 20;
+        int turnos = 5;
 
         for (int i = 0; i < turnos; i++) {
             int accionpj1 = menuPersonaje(pj1);
@@ -80,8 +80,10 @@ public class MainJuego {
 
         if (pj1.getVida() > pj2.getVida()) {
             System.out.printf("GANADOR : %10s👑", pj1.getNombre());
-        }  else {
+        }  else if (pj1.getVida() < pj2.getVida()){
             System.out.printf("GANADOR : %10s👑", pj2.getNombre());
+        } else if (pj1.getVida() == pj2.getVida()) {
+            System.out.println("EMPATE 👑");
         }
 
     }
