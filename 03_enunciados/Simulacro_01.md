@@ -28,29 +28,40 @@ Durante el simulacro deberás demostrar:
 import java.util.ArrayList;
 
 public class Parking {
-    private ArrayList<Vehiculo> listaVehiculos;
-    
-    // Constructor
+    /*
+        Atributos:
+            listaVehiculos - Lista de Vehículos
+    */
+
+    // Constructor vacío donde inicializamos la lista
     
     // Getters y Setters
 
-    public void registrarVehiculo(Vehiculo v) {
-        // Añade un vehiculo
-    }
+    // Métodos
+    /*
+        registrarVehiculo
+            - Añade un vehículo
+        @params Vehiculo
+     */
 
-    public void listarVehiculos() {
-        // Mostrar la lista de vehículos
-    }
+    /*
+        listarVehiculo
+            - Muestra la lista de vehículos
+     */
+    
+    /*
+        buscarPorId
+            - Busca un vehículo por ID
+        @params id
+        @return Vehiculo
+     */
 
-    public Vehiculo buscarPorId(int id) throws VehiculoNoEncontradoException {
-        // Buscar un vehículo por ID y devolverlo si existe
-        return null;
-    }
-
-    public boolean eliminarPorId(int id) {
-        // Elimina un vehículo por ID y devuelve true si lo logró
-        return false;
-    }
+    /*
+        eliminarPorId
+            - Elimina un vehículo por ID
+        @params id
+        @return boolean
+     */
 }
 ```
 
@@ -59,16 +70,22 @@ public class Parking {
 ### 🚗 Clase `Vehiculo`
 ```java
 public class Vehiculo {
-    private static int id;
-    private String matricula;
-    private String marca;
-    private String color;
+    /*
+        Atributos:
+            id - Único auto-incremental
+            matricula - Cadena de caracteres
+            marca - Texto
+     */
 
-    //// Constructores
+    // Constructor/es (Mínimo 2)
 
     // Getters y Setters
 
-    // Método toString() que retorna texto formateado
+    // Métodos
+    /*
+        toString
+            - Texto formateado
+     */
     
 }
 ```
