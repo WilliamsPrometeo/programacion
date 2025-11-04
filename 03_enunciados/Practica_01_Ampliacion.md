@@ -38,7 +38,7 @@ El programa debe cumplir las siguientes condiciones:
 ## ⚙️ Requisitos técnicos
 
 - El programa debe contener una clase principal llamada `ControlAcceso` con un método `main`.
-- Se debe usar la clase `MyScanner` para la entrada de datos.
+- Se debe usar la clase `recursos.MyScanner` para la entrada de datos.
 - Utiliza **estructuras de control** y **bucles** correctamente indentados.
 - No se deben usar bibliotecas externas.
 
@@ -51,7 +51,7 @@ El programa debe cumplir las siguientes condiciones:
 - Usa un contador de intentos (`int intentos = 0;`).
 - Controla el rango de edad antes de aplicar los mensajes.
 - Puedes usar `while (intentos < 3 && !valido)` para limitar intentos.
-- Cierra el `MyScanner` al final con `sc.cerrar();`.
+- Cierra el `recursos.MyScanner` al final con `sc.cerrar();`.
 
 ---
 
