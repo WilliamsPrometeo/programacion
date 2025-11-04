@@ -1,4 +1,88 @@
-# Ignorar configuración de IntelliJ
+#############################
+# ⚙️ Maven y build outputs
+#############################
+target/
+*/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+#############################
+# 🧱 Compilación / binarios Java
+#############################
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+#############################
+# 🧠 IntelliJ IDEA / JetBrains
+#############################
 .idea/
 *.iml
+*.ipr
+*.iws
 out/
+*.class
+
+#############################
+# 🧩 Eclipse / NetBeans / VSCode
+#############################
+.project
+.classpath
+.csettings
+.settings/
+.metadata/
+.nb-gradle/
+build/
+bin/
+nbproject/private/
+.vscode/
+
+#############################
+# 🧰 Sistema operativo
+#############################
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+Icon?
+.Spotlight-V100
+.Trashes
+
+#############################
+# 🧪 Logs, temporales y dumps
+#############################
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+*.rej
+*.out
+
+#############################
+# 🔒 Archivos de entorno / config local
+#############################
+*.env
+*.local.properties
+.envrc
+.gradle/
+mvnw*
+!mvnw
+!mvnw.cmd
+
+#############################
+# 🧩 Archivos específicos del proyecto
+#############################
+# Si tus alumnos generan entregas temporales o subcarpetas locales
+entregas_temporales/
+backup/
+__pycache__/
