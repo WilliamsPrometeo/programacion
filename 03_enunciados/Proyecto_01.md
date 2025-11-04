@@ -10,7 +10,7 @@ El sistema permitirá:
 - Buscar un videojuego por su **ID**.  
 - Eliminar un videojuego del catálogo por **ID**.  
 
-El objetivo principal es **integrar todo lo aprendido** hasta ahora: clases, objetos, métodos, excepciones, colecciones y estructuras de control.
+El objetivo principal es **integrar todo lo aprendido** hasta ahora: programacion_clase.clases, objetos, métodos, excepciones, colecciones y estructuras de control.
 
 ---
 
@@ -19,7 +19,7 @@ El objetivo principal es **integrar todo lo aprendido** hasta ahora: clases, obj
 Durante la realización del proyecto, el alumnado deberá demostrar su capacidad para:
 
 - Declarar e inicializar variables (tanto locales como estáticas).  
-- Crear clases con atributos, constructores y métodos bien estructurados.  
+- Crear programacion_clase.clases con atributos, constructores y métodos bien estructurados.  
 - Implementar **métodos parametrizados** (con y sin retorno).  
 - Utilizar correctamente `System.out.println` y `System.out.printf`.  
 - Aplicar **condicionales** (`if`, `switch`) y **bucles** (`while`, `for`).  
@@ -28,7 +28,7 @@ Durante la realización del proyecto, el alumnado deberá demostrar su capacidad
 
 ---
 
-## 🧩 Estructura básica de las clases
+## 🧩 Estructura básica de las programacion_clase.clases
 
 ### 🏪 Clase `Tienda.java`
 ```java
@@ -102,8 +102,8 @@ public class Videojuego {
 ## 🧠 Instrucciones para el alumnado
 
 1. **Crea un nuevo proyecto Java** en IntelliJ o VS Code.  
-2. Implementa las clases necesarias (Tienda y Videojuego).  
-3. Crea un `Main.java` con un menú que permita:
+2. Implementa las programacion_clase.clases necesarias (Tienda y Videojuego).  
+3. Crea un `programacion_clase.Main.java` con un menú que permita:
    - Agregar videojuegos (pidiendo datos al usuario).
    - Listar todos los videojuegos.
    - Eliminar un videojuego por **ID**.
@@ -132,7 +132,7 @@ public class Videojuego {
 | Criterio | Descripción | Puntuación |
 |-----------|--------------|------------|
 | **Estructura y organización del código** | El código está ordenado, con nombres claros y comentarios relevantes. | 2 pts |
-| **Uso de clases y objetos** | Implementa correctamente las clases `Videojuego` y `Tienda`. | 2 pts |
+| **Uso de programacion_clase.clases y objetos** | Implementa correctamente las programacion_clase.clases `Videojuego` y `Tienda`. | 2 pts |
 | **Métodos parametrizados y retornos** | Crea métodos bien definidos, reutilizables y funcionales. | 1 pt |
 | **Uso de condicionales y bucles** | Utiliza estructuras de control adecuadas para los menús y validaciones. | 1 pt |
 | **Control de excepciones** | Maneja excepciones correctamente e incluye una personalizada. | 2 pts |

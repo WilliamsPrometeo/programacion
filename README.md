@@ -3,7 +3,7 @@
 Bienvenid@ 👋  
 Este repositorio contiene los **materiales, proyectos_practicos y proyectos prácticos** del módulo de **Programación** en los ciclos de **DAM** (Desarrollo de Aplicaciones Multiplataforma) y **DAW** (Desarrollo de Aplicaciones Web).  
 
-Aquí encontrarás desde las primeras clases teóricas hasta proyectos completos en Java.
+Aquí encontrarás desde las primeras programacion_clase.clases teóricas hasta proyectos completos en Java.
 
 ---
 
@@ -17,9 +17,9 @@ README.md
 
 ### 🔹 Descripción de carpetas
 
-- **01_clases/** → Contiene materiales de clase, ejemplos de código y presentaciones.  
+- **01_clases/** → Contiene materiales de programacion_clase, ejemplos de código y presentaciones.  
 - **02_ejercicios_resueltos/** → Incluye proyectos_practicos prácticos ya resueltos y comentados.  
-- **03_proyectos_practicos/** → Reúne pequeños proyectos o prácticas integradoras desarrolladas en clase.
+- **03_proyectos_practicos/** → Reúne pequeños proyectos o prácticas integradoras desarrolladas en programacion_clase.
 
 ---
 

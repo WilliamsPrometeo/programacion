@@ -2,11 +2,11 @@
 
 ## 🧩 ¿Qué es un `ArrayList`?
 
-Un **`ArrayList`** es una clase en Java que permite **almacenar una lista de elementos de forma dinámica**, es decir, su tamaño **puede crecer o disminuir** durante la ejecución del programa.
+Un **`ArrayList`** es una programacion_clase en Java que permite **almacenar una lista de elementos de forma dinámica**, es decir, su tamaño **puede crecer o disminuir** durante la ejecución del programa.
 
 A diferencia de los **arrays tradicionales**, los `ArrayList` **no tienen un tamaño fijo**. Puedes agregar, eliminar o modificar elementos fácilmente.
 
-Para usar `ArrayList`, debes importar la clase desde el paquete `java.util`:
+Para usar `ArrayList`, debes importar la programacion_clase desde el paquete `java.util`:
 
 ```java
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 - Permite **almacenar varios elementos** del mismo tipo.
 - El tamaño **se ajusta automáticamente** al agregar o eliminar elementos.
 - Se puede acceder a los elementos por su **índice** (posición).
-- No permite tipos primitivos directamente (`int`, `double`, etc.); se usan sus **clases envolventes** (`Integer`, `Double`, ...).
+- No permite tipos primitivos directamente (`int`, `double`, etc.); se usan sus **programacion_clase.clases envolventes** (`Integer`, `Double`, ...).
 
 ---
 
