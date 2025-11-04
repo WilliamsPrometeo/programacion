@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>Programación</name>
-    <description>Repositorio de ejercicios y programacion_clase.clases de programación dividido en módulos
+    <description>Repositorio de ejercicios y ejemplos_clase de programación dividido en módulos
         independientes.</description>
 
     <modules>

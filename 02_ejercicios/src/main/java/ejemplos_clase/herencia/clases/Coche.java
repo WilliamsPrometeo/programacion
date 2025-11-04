@@ -1,6 +1,6 @@
-package programacion_clase.herencia.clases;
+package ejemplos_clase.herencia.clases;
 
-import programacion_clase.herencia.enums.Marca;
+import ejemplos_clase.herencia.enums.Marca;
 
 public class Coche extends Vehiculo {
 

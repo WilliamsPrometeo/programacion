@@ -1,4 +1,4 @@
-package programacion_clase.herencia.enums;
+package ejemplos_clase.herencia.enums;
 
 public enum Marca {
     KIA,

@@ -1,4 +1,4 @@
-package programacion_clase;
+package ejemplos_clase;
 
 import ejercicios.gestion_biblioteca.clases.Biblioteca;
 import ejercicios.gestion_biblioteca.clases.Libro;

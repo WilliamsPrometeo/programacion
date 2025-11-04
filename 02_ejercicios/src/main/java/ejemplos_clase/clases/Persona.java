@@ -1,4 +1,4 @@
-package programacion_clase.clases;
+package ejemplos_clase.clases;
 
 public class Persona {
     private String nombre;

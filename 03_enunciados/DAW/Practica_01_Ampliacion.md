@@ -37,8 +37,8 @@ El programa debe cumplir las siguientes condiciones:
 
 ## ⚙️ Requisitos técnicos
 
-- El programa debe contener una programacion_clase principal llamada `ControlAcceso` con un método `main`.
-- Se debe usar la programacion_clase `recursos.MyScanner` para la entrada de datos.
+- El programa debe contener una ejemplos_clase principal llamada `ControlAcceso` con un método `main`.
+- Se debe usar la ejemplos_clase `recursos.MyScanner` para la entrada de datos.
 - Utiliza **estructuras de control** y **bucles** correctamente indentados.
 - No se deben usar bibliotecas externas.
 

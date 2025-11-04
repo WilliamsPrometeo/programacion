@@ -1,7 +1,7 @@
-package programacion_clase;
+package ejemplos_clase;
 
 import recursos.MyScanner;
-import programacion_clase.clases.Persona;
+import ejemplos_clase.clases.Persona;
 import recursos.exceptions.MyException;
 
 public class GestionPersona {

@@ -1,7 +1,7 @@
-package programacion_clase.herencia;
+package ejemplos_clase.herencia;
 
-import programacion_clase.herencia.clases.Coche;
-import programacion_clase.herencia.enums.Marca;
+import ejemplos_clase.herencia.clases.Coche;
+import ejemplos_clase.herencia.enums.Marca;
 
 public class MainHerencia {
 

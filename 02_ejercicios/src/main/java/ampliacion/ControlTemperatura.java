@@ -1,4 +1,4 @@
-package MOP_ampliacion;
+package ampliacion;
 
 import recursos.MyScanner;
 

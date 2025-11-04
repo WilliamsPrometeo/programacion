@@ -1,4 +1,4 @@
-package programacion_clase;
+package ejemplos_clase;
 
 import recursos.MyScanner;
 import recursos.exceptions.MyException;

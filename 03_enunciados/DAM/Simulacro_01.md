@@ -5,14 +5,14 @@
 Vas a desarrollar una aplicación de consola en **Java** que gestione un **parking de vehículos**.  
 El programa debe permitir **registrar**, **listar**, **buscar** y **eliminar** vehículos por su **ID**.
 
-La aplicación debe usar **programacion_clase.clases**, **métodos parametrizados**, **ArrayList**, **condicionales**, **bucles**, **excepciones** y mostrar la información formateada con `printf`.
+La aplicación debe usar **ejemplos_clase.clases**, **métodos parametrizados**, **ArrayList**, **condicionales**, **bucles**, **excepciones** y mostrar la información formateada con `printf`.
 
 ---
 
 ## 🎯 Objetivos de aprendizaje
 Durante el simulacro deberás demostrar:
 
-- Creación y uso de **programacion_clase.clases** y **atributos estáticos**.  
+- Creación y uso de **ejemplos_clase.clases** y **atributos estáticos**.  
 - Implementación de **métodos con parámetros y retorno**.  
 - Uso correcto de **ArrayList** para almacenar objetos.  
 - Aplicación de **condicionales** y **bucles**.  
@@ -21,7 +21,7 @@ Durante el simulacro deberás demostrar:
 
 ---
 
-## 🚙 Estructura básica de programacion_clase.clases
+## 🚙 Estructura básica de ejemplos_clase.clases
 
 ### 🏢 Clase `Parking`
 ```java
@@ -97,7 +97,7 @@ public class Vehiculo {
 | Criterio | Descripción | Puntos |
 |-----------|--------------|--------|
 | **Estructura y organización** | Código limpio, comentado y ordenado. | 1 |
-| **Clases y métodos** | Correcta definición y uso de programacion_clase.clases y métodos. | 1 |
+| **Clases y métodos** | Correcta definición y uso de ejemplos_clase.clases y métodos. | 1 |
 | **Uso de ArrayList** | Manipulación eficiente de la lista de vehículos. | 1 |
 | **Control de excepciones** | Manejo de errores de entrada y excepción personalizada. | 1 |
 | **Salida formateada y funcionalidad** | Uso de `printf`, menú claro y resultados correctos. | 1 |
