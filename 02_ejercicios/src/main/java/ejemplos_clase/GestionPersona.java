@@ -1,20 +1,20 @@
 package ejemplos_clase;
 
 import recursos.MyScanner;
-import ejemplos_clase.clases.Persona;
+import ejemplos_clase.clases.Personas;
 import recursos.exceptions.MyException;
 
 public class GestionPersona {
     private static final MyScanner sc = new MyScanner();
-    private static Persona persona = new Persona();
+    private static Personas persona = new Personas();
 
     public static void main(String[] args) throws MyException {
         persona = pedirDatosPersona();
         menuPersona();
     }
 
-    public static Persona pedirDatosPersona() {
-        Persona persona = new Persona();
+    public static Personas pedirDatosPersona() {
+        Personas persona = new Personas();
 
         persona.setNombre(sc.pedirSoloTexto("Ingrese su nombre: "));
         persona.setApellido(sc.pedirSoloTexto("Ingrese su apellido: "));

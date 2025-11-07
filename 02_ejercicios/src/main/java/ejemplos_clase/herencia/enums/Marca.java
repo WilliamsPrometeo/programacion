@@ -4,5 +4,9 @@ public enum Marca {
     KIA,
     MERCEDES,
     FORD,
-    AUDI
+    AUDI,
+    DUCATI,
+    YAMAHA,
+    KAWASAKI,
+    HONDA
 }

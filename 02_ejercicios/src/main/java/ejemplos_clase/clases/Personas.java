@@ -1,24 +1,24 @@
 package ejemplos_clase.clases;
 
-public class Persona {
+public class Personas {
     private String nombre;
     private String apellido;
     private int edad;
     private Direccion direccion;
     private int dinero_en_banco;
 
-    public Persona() {
+    public Personas() {
         this.dinero_en_banco = 1000;
     }
 
-    public Persona(String nombre, String apellido, int edad) {
+    public Personas(String nombre, String apellido, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.dinero_en_banco = 1000;
     }
 
-    public Persona(int edad, String nombre) {
+    public Personas(int edad, String nombre) {
         this.edad = edad;
         this.nombre = nombre;
         this.dinero_en_banco = 1000;
