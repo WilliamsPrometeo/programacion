@@ -1,10 +1,11 @@
 package ejemplos_clase;
 
-import ejercicios.gestion_biblioteca.clases.Biblioteca;
-import ejercicios.gestion_biblioteca.clases.Libro;
 import recursos.MyScanner;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -12,28 +13,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Biblioteca biblioteca = new Biblioteca(1, "Ejemplo");
+        LocalDateTime ahora = LocalDateTime.now();
+        LocalDate ahora1 = LocalDate.now();
+        LocalTime hora1 = LocalTime.now();
+        System.out.println(ahora);
+        System.out.println(ahora1);
+        System.out.println(hora1);
 
-        Libro libro1 = new Libro(1,"El Quijote", "Cervantes", 500, "FACAAF15122");
-        Libro libro2 = new Libro(2,"Ejemplo", "Yo", 50, "AESSAF15122");
-        Libro libro3 = new Libro();
-        libro3.setId(scanner.pedirNumero("Inserte el id del libro: "));
-        libro3.setTitulo(scanner.pideTexto("Introduce el titulo del libro: "));
-        libro3.setAutor(scanner.pedirSoloTexto("Introduce el autor del libro: "));
-        libro3.setNumeroPaginas(scanner.pedirNumero("Introduce el numero de paginas del libro: "));
-        libro3.setISBN(scanner.pideTexto("Introduce el ISBN del libro: "));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formato = formatter.format(ahora);
+        String formato2 = formatter2.format(ahora1);
+        String formato3 = formatter3.format(hora1);
+        System.out.println(formato);
+        System.out.println(formato2);
+        System.out.println(formato3);
 
-        biblioteca.addLibro(libro1);
-        biblioteca.addLibro(libro2);
-        biblioteca.addLibro(libro3);
-
-        ArrayList<Libro> libros = biblioteca.getLibros();
-
-        int size = libros.size();
-
-        for(int i = 0; i < size; i++) {
-            System.out.println(libros.get(i));
-        }
     }
 
 }

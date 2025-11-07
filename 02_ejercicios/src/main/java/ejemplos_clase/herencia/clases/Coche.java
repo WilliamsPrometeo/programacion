@@ -2,65 +2,72 @@ package ejemplos_clase.herencia.clases;
 
 import ejemplos_clase.herencia.enums.Marca;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Clase Coche que hereda de la clase abstracta Vehículo
  * @see Vehiculo
  * @author Profesor - Williams
- * @version 1.0
+ * @version 2.0
  */
 public class Coche extends Vehiculo {
 
-    private int cv;
-
-    /**
-     * Construcutor principal de la clase Coche
-     * @see Vehiculo
-     * @param marca atributo heredado de Vehiculo
-     * @param modelo atributo heredado de Vehiculo
-     * @param num_ruedas atributo heredado de Vehiculo
-     * @param cv numero de caballos del coche
-     */
-    public Coche(Marca marca, String modelo, int num_ruedas, int cv) {
-        super(marca, modelo, num_ruedas);
-        this.cv = cv;
-    }
-
-    /**
-     * Constructor secundario de la clase Coche
-     * @see Vehiculo
-     * @param modelo atributo heredado de Vehiculo
-     * @param num_ruedas atributo heredado de Vehiculo
-     * @param cv numero de caballos del coche
-     */
-    public Coche(String modelo, int num_ruedas, int cv) {
-        super(modelo, num_ruedas);
-        this.cv = cv;
-    }
+    private int num_puertas;
+    private boolean airbags;
 
     /**
      * Constructor heredado de la clase Vehiculo
      * @see Vehiculo
-     * @param modelo atributo heredado de Vehiculo
-     * @param num_ruedas atributo heredado de Vehiculo
+     * @param marca atributo heredado
+     * @param precio atributo heredado
      */
-    public Coche(String modelo, int num_ruedas) {
-        super(modelo, num_ruedas);
+    public Coche(Marca marca, double precio) {
+        super(marca, precio);
     }
 
     /**
-     * Getter del atributo Cv
-     * @return el número de caballos del coche
+     * Constructor principal de la clase Coche
+     * @param marca atributo heredado
+     * @param precio atributo heredado
+     * @param num_puertas Numero de puertas del Coche
+     * @param airbags ¿Tiene airbags?
      */
-    public int getCv() {
-        return cv;
+    public Coche(Marca marca, double precio, int num_puertas, boolean airbags) {
+        super(marca, precio);
+        this.num_puertas = num_puertas;
+        this.airbags = airbags;
     }
 
     /**
-     * Setter del atributo Cv
-     * @param cv número de caballos del coche
+     * Getter del atributo Puertas
+     * @return Número de puertas del Coche
      */
-    public void setCv(int cv) {
-        this.cv = cv;
+    public int getNum_puertas() {
+        return num_puertas;
+    }
+
+    /**
+     * Setter del atributo Puertas
+     * @param num_puertas Número de puertas del Coche
+     */
+    public void setNum_puertas(int num_puertas) {
+        this.num_puertas = num_puertas;
+    }
+
+    /**
+     * Getter del atributo Airbags
+     * @return si tiene airbags true, sino return false
+     */
+    public boolean isAirbags() {
+        return airbags;
+    }
+
+    /**
+     * Setter del atributo Airbags
+     * @param airbags establece si tiene o no airbags
+     */
+    public void setAirbags(boolean airbags) {
+        this.airbags = airbags;
     }
 
     /**
@@ -69,7 +76,9 @@ public class Coche extends Vehiculo {
      */
     @Override
     public String mostrar() {
-        return "Esto es un coche: " + super.getMarca() + super.getModelo() + this.getCv();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String fecha_formateada = super.getFecha_matriculacion().format(formatter);
+        return String.format("Coche: %s, %f, %d, %s", super.getMarca(), super.getPrecio(), num_puertas, fecha_formateada);
     }
 
 }

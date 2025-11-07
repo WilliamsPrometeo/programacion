@@ -2,36 +2,28 @@ package ejemplos_clase.herencia.clases;
 
 import ejemplos_clase.herencia.enums.Marca;
 
+import java.time.LocalDateTime;
+
 /**
  * Clase abstracta Vehiculo, para uso de herencia
  * @author Profesor - Williams
- * @version 1.0
+ * @version 2.0
  */
 abstract class Vehiculo {
     private Marca marca;
-    private String modelo;
-    private int num_ruedas;
+    private double precio;
+    private LocalDateTime fecha_matriculacion;
 
     /**
      * Constructor principal de la clase Vehículo
+     * Inicializa el atribtuo fecha_matricula con la fecha del momento de su creación
      * @param marca Enumeración para establecer la marca
-     * @param modelo Cadena de caracteres para contener el modelo
-     * @param num_ruedas Numero de ruedas del vehiculo
+     * @param precio Precio del Vehículo
      */
-    public Vehiculo(Marca marca, String modelo, int num_ruedas) {
+    public Vehiculo(Marca marca, double precio) {
         this.marca = marca;
-        this.modelo = modelo;
-        this.num_ruedas = num_ruedas;
-    }
-
-    /**
-     * Constructor secundario de la clase Vehículo
-     * @param modelo Cadena de caracteres para contener el modelo
-     * @param num_ruedas Numero de ruedas del vehiculo
-     */
-    public Vehiculo(String modelo, int num_ruedas) {
-        this.modelo = modelo;
-        this.num_ruedas = num_ruedas;
+        this.precio = precio;
+        this.fecha_matriculacion = LocalDateTime.now();
     }
 
     /**
@@ -51,35 +43,35 @@ abstract class Vehiculo {
     }
 
     /**
-     * Getter del atributo Modelo
-     * @return el modelo
+     * Getter del atributo Precio
+     * @return el precio del Vehiculo
      */
-    public String getModelo() {
-        return modelo;
+    public double getPrecio() {
+        return precio;
     }
 
     /**
-     * Setter del atributo Modelo
-     * @param modelo Cadena de caracteres para contener el modelo
+     * Setter del atributo Precio
+     * @param precio Precio del Vehiculo
      */
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     /**
-     * Getter del atributo NumRuedas
-     * @return el número de ruedas
+     * Getter del atributo Fecha Matriculación
+     * @return la fecha en la que se ha matriculado
      */
-    public int getNum_ruedas() {
-        return num_ruedas;
+    public LocalDateTime getFecha_matriculacion() {
+        return fecha_matriculacion;
     }
 
     /**
-     * Setter del atributo NumRuedas
-     * @param num_ruedas Número de ruedas del vehículo
+     * Setter del atributo Fecha Matriculación
+     * @param fecha_matriculacion establece la fecha de matriculación
      */
-    public void setNum_ruedas(int num_ruedas) {
-        this.num_ruedas = num_ruedas;
+    public void setFecha_matriculacion(LocalDateTime fecha_matriculacion) {
+        this.fecha_matriculacion = fecha_matriculacion;
     }
 
     /**
