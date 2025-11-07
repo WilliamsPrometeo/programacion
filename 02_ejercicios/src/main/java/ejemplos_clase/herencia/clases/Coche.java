@@ -6,9 +6,10 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Clase Coche que hereda de la clase abstracta Vehículo
- * @see Vehiculo
+ *
  * @author Profesor - Williams
  * @version 2.0
+ * @see Vehiculo
  */
 public class Coche extends Vehiculo {
 
@@ -17,9 +18,10 @@ public class Coche extends Vehiculo {
 
     /**
      * Constructor heredado de la clase Vehiculo
-     * @see Vehiculo
-     * @param marca atributo heredado
+     *
+     * @param marca  atributo heredado
      * @param precio atributo heredado
+     * @see Vehiculo
      */
     public Coche(Marca marca, double precio) {
         super(marca, precio);
@@ -27,10 +29,11 @@ public class Coche extends Vehiculo {
 
     /**
      * Constructor principal de la clase Coche
-     * @param marca atributo heredado
-     * @param precio atributo heredado
+     *
+     * @param marca       atributo heredado
+     * @param precio      atributo heredado
      * @param num_puertas Numero de puertas del Coche
-     * @param airbags ¿Tiene airbags?
+     * @param airbags     ¿Tiene airbags?
      */
     public Coche(Marca marca, double precio, int num_puertas, boolean airbags) {
         super(marca, precio);
@@ -40,6 +43,7 @@ public class Coche extends Vehiculo {
 
     /**
      * Getter del atributo Puertas
+     *
      * @return Número de puertas del Coche
      */
     public int getNum_puertas() {
@@ -48,6 +52,7 @@ public class Coche extends Vehiculo {
 
     /**
      * Setter del atributo Puertas
+     *
      * @param num_puertas Número de puertas del Coche
      */
     public void setNum_puertas(int num_puertas) {
@@ -56,6 +61,7 @@ public class Coche extends Vehiculo {
 
     /**
      * Getter del atributo Airbags
+     *
      * @return si tiene airbags true, sino return false
      */
     public boolean isAirbags() {
@@ -64,6 +70,7 @@ public class Coche extends Vehiculo {
 
     /**
      * Setter del atributo Airbags
+     *
      * @param airbags establece si tiene o no airbags
      */
     public void setAirbags(boolean airbags) {
@@ -72,13 +79,14 @@ public class Coche extends Vehiculo {
 
     /**
      * Metodo sobreescrito de la clase heredada para mostrar los datos del coche
+     *
      * @return datos del coche
      */
     @Override
     public String mostrar() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String fecha_formateada = super.getFecha_matriculacion().format(formatter);
-        return String.format("Coche: %s, %f, %d, %s", super.getMarca(), super.getPrecio(), num_puertas, fecha_formateada);
+        return String.format("Coche: %s, %.2f, %d, %s", super.getMarca(), super.getPrecio(), num_puertas, fecha_formateada);
     }
 
 }
