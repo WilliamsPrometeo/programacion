@@ -1,4 +1,4 @@
-# 🧩 Proyecto 3 – Gestión de Notas de Alumnos
+# 🧩 Proyecto 2 – Gestión de Notas de Alumnos
 
 ## 📘 Nivel
 1º DAW — Asignatura: *Ampliación de Programación (Java)*  
