@@ -14,13 +14,11 @@ El objetivo es reforzar el uso de **condicionales, bucles y validación de datos
 3. El programa debe pedir los siguientes datos:
     - Nombre del empleado.
     - Horas trabajadas durante la semana (de **0 a 70**).
-    - Tarifa por hora (de **7.5 a 50 euros/hora**).
-4. Si los valores introducidos están fuera del rango válido, debe volver a pedirse el dato.
+    - 
+4. Establecer la tarifa por hora (de **7.5 euros/hora**).
+5. Si los valores introducidos están fuera del rango válido, debe volver a pedirse el dato.
     - Máximo **3 intentos** antes de mostrar un mensaje de error y finalizar el programa.
-5. El programa debe calcular el **salario semanal** aplicando estas reglas:
-    - Hasta 40 horas → pago normal.
-    - De 41 a 50 horas → las horas extra se pagan al **1.5x** de la tarifa.
-    - Más de 50 horas → el resto se paga al **2x** de la tarifa.
+
 6. Al final, debe mostrarse un resumen con:
     - Nombre del empleado.
     - Horas trabajadas.
@@ -33,7 +31,7 @@ El objetivo es reforzar el uso de **condicionales, bucles y validación de datos
 
 - El código debe estar correctamente **indentado** y **comentado**.
 - Se deben usar **métodos estáticos** para dividir la lógica:
-    - `pedirHoras()`, `pedirTarifa()`, `calcularSalario()`, `mostrarResumen()`.
+    - `pedirHoras()`, `calcularSalario()`, `mostrarResumen()`.
 - Se debe validar la entrada numérica y controlar los intentos.
 - No se permite el uso de bibliotecas externas.
 - El programa debe funcionar correctamente sin errores de ejecución.
@@ -46,15 +44,13 @@ El objetivo es reforzar el uso de **condicionales, bucles y validación de datos
 === CALCULADORA DE HORAS LABORALES ===
 Introduce el nombre del empleado: Marta
 Introduce las horas trabajadas esta semana: 46
-Introduce la tarifa por hora (€): 15
 
 ===== RESUMEN SEMANAL =====
 Empleado: Marta
 Horas trabajadas: 46
-Tarifa por hora: 15.0 €
+Tarifa por hora: 7.5 €
 Salario total: 735.0 €
 ```
-*(40h normales → 600€ + 6h extra → 6×(15×1.5)=135 → Total 735€)*
 
 ---
 
