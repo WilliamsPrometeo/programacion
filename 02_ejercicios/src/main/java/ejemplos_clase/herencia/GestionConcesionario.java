@@ -11,6 +11,7 @@ public class GestionConcesionario {
 
     private static final MyScanner sc = new MyScanner();
     private static ArrayList<Persona> personas = new ArrayList<>();
+    private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
 
     public static void main(String[] args) {
         rellenarVehiculos();
@@ -18,12 +19,18 @@ public class GestionConcesionario {
     }
 
     private static void rellenarVehiculos() {
-        Coche kia = new Coche(Marca.KIA, 14999.99, 5, true);
-        Coche bmw = new Coche(Marca.BMW, 80000, 3, false);
-        Coche mercedes = new Coche(Marca.MERCEDES, 40000, 5, true);
-        Moto ducati = new Moto(Marca.DUCATI, 9999.99, 250, false);
-        Moto yamaha = new Moto(Marca.YAMAHA, 15000, 250, false);
-        Moto kawasaki = new Moto(Marca.KAWASAKI, 6000.59, 1000, true);
+        Vehiculo kia = new Coche(Marca.KIA, 14999.99, 5, true);
+        Vehiculo bmw = new Coche(Marca.BMW, 80000, 3, false);
+        Vehiculo mercedes = new Coche(Marca.MERCEDES, 40000, 5, true);
+        Vehiculo ducati = new Moto(Marca.DUCATI, 9999.99, 250, false);
+        Vehiculo yamaha = new Moto(Marca.YAMAHA, 15000, 250, false);
+        Vehiculo kawasaki = new Moto(Marca.KAWASAKI, 6000.59, 1000, true);
+        vehiculos.add(kia);
+        vehiculos.add(bmw);
+        vehiculos.add(mercedes);
+        vehiculos.add(ducati);
+        vehiculos.add(yamaha);
+        vehiculos.add(kawasaki);
     }
 
     public static void menuPrincipal() {

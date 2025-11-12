@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * @author Profesor - Williams
  * @version 2.0
  */
-abstract class Vehiculo {
+public abstract class Vehiculo {
     private Marca marca;
     private double precio;
     private LocalDateTime fecha_matriculacion;
