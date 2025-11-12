@@ -8,13 +8,13 @@ import java.util.ArrayList;
  * Clase Cliente que hereda de la clase Persona
  *
  * @author Profesor - Williams
- * @version 1.0
+ * @version 1.1
  * @see Persona
  */
 public class Cliente extends Persona {
     private int num_cliente;
     private LocalDateTime fecha_alta;
-    private ArrayList<LocalDateTime> compras;
+    private ArrayList<Factura> compras;
 
     /**
      * Constructor heredado de la clase Persona
@@ -90,7 +90,7 @@ public class Cliente extends Persona {
      *
      * @return las lista de compras del cliente
      */
-    public ArrayList<LocalDateTime> getCompras() {
+    public ArrayList<Factura> getCompras() {
         return compras;
     }
 
@@ -99,7 +99,7 @@ public class Cliente extends Persona {
      *
      * @param compras establece la lista de compras del cliente
      */
-    public void setCompras(ArrayList<LocalDateTime> compras) {
+    public void setCompras(ArrayList<Factura> compras) {
         this.compras = compras;
     }
 

@@ -5,6 +5,7 @@ public enum Marca {
     MERCEDES,
     FORD,
     AUDI,
+    BMW,
     DUCATI,
     YAMAHA,
     KAWASAKI,
