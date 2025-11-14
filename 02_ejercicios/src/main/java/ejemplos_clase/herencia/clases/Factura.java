@@ -16,11 +16,11 @@ public class Factura {
     private LocalDateTime fecha_creacion;
     private Vehiculo vehiculo;
 
-    public Factura(int num_factura, int num_cliente, int num_empleado, LocalDateTime fecha_creacion, Vehiculo vehiculo) {
+    public Factura(int num_factura, int num_cliente, int num_empleado, Vehiculo vehiculo) {
         this.num_factura = num_factura;
         this.num_cliente = num_cliente;
         this.num_empleado = num_empleado;
-        this.fecha_creacion = fecha_creacion;
+        this.fecha_creacion = LocalDateTime.now();
         this.vehiculo = vehiculo;
     }
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Clase Persona
  *
  * @author Profesor - Williams
- * @version 1.0
+ * @version 1.1
  */
 public class Persona {
     private String nombre;
@@ -107,6 +107,14 @@ public class Persona {
      */
     public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
+    }
+
+    /**
+     * Metodo para añadir un Vehículo a la lista de Vehículos de la persona
+     * @param vehiculo vehiculo añadido
+     */
+    public void addVehiculo(Vehiculo vehiculo) {
+        this.vehiculos.add(vehiculo);
     }
 
     /**

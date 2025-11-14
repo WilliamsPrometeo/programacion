@@ -5,7 +5,6 @@ import ejemplos_clase.herencia.enums.Marca;
 import ejemplos_clase.herencia.exception.HerenciaException;
 import recursos.MyScanner;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 
 public class GestionConcesionario {
@@ -14,6 +13,7 @@ public class GestionConcesionario {
     private static ArrayList<Persona> personas = new ArrayList<>();
     private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     private static ArrayList<Factura> facturas = new ArrayList<>();
+    private static int contador = 1;
 
     public static void main(String[] args) {
         rellenarVehiculos();
@@ -102,11 +102,11 @@ public class GestionConcesionario {
                         "\nOpcion: ");
                 switch (opcion) {
                     case 1:
-                        inicioCliente();
+                        menuCliente(inicioCliente());
                         correcto = true;
                         break;
                     case 2:
-                        inicioEmpleado();
+                        menuEmpleado(inicioEmpleado());
                         correcto = true;
                         break;
                     case 3:
@@ -119,6 +119,38 @@ public class GestionConcesionario {
             } catch (HerenciaException e) {
                 System.out.println(e.getMessage());
                 correcto = false;
+            }
+        } while (!correcto);
+    }
+
+    private static void menuCliente(Cliente cliente) {
+        boolean correcto;
+        do {
+            System.out.printf("******* MENU CLIENTE  %d *******", cliente.getNum_cliente());
+            int opcion = sc.pedirNumero("1. Ver Facturas" +
+                    "\n2. Comprar Vehiculo" +
+                    "\n3. Mostrar catalogo" +
+                    "\n4. Cerrar Session" +
+                    "\nOpcion: ");
+            switch (opcion) {
+                case 1:
+                    mostrarFacturas(cliente);
+                    correcto = true;
+                    break;
+                case 2:
+                    comprarVehiculo(cliente);
+                    correcto = true;
+                    break;
+                case 3:
+                    mostrarVehiculos();
+                    correcto = true;
+                    break;
+                case 4:
+                    correcto = true;
+                    break;
+                default:
+                    correcto = false;
+                    break;
             }
         } while (!correcto);
     }
@@ -138,10 +170,11 @@ public class GestionConcesionario {
                     correcto = true;
                     break;
                 case 2:
-
+                    comprarVehiculo(empleado);
                     correcto = true;
                     break;
                 case 3:
+                    gestionVehiculo();
                     correcto = true;
                     break;
                 case 4:
@@ -154,6 +187,199 @@ public class GestionConcesionario {
         } while (!correcto);
     }
 
+    private static void gestionVehiculo() {
+        boolean correcto;
+        do {
+            System.out.println("******* GESTION DE VEHICULO *******");
+            int opcion = sc.pedirNumero("1. Agregar Vehiculo" +
+                    "\n2. Eliminar Vehiculo" +
+                    "\n3. Listar Vehiculos" +
+                    "\n4. Atras." +
+                    "\nOpcion: ");
+            switch (opcion) {
+                case 1:
+                    agregarVehiculo();
+                    correcto = true;
+                    break;
+                case 2:
+                    eliminarVehiculo();
+                    correcto = true;
+                    break;
+                case 3:
+                    mostrarVehiculos();
+                    correcto = true;
+                    break;
+                case 4:
+                    correcto = true;
+                    break;
+                default:
+                    correcto = false;
+                    break;
+            }
+
+        } while (!correcto);
+    }
+
+    private static void eliminarVehiculo() {
+        boolean correcto;
+        do {
+            mostrarVehiculos();
+            int opcion = sc.pedirNumero("Ingrese el numero de vehiculo que desea eliminar: ");
+            if (opcion < 0 || opcion > vehiculos.size()) {
+                System.out.println("Opcion no valida.");
+                correcto = false;
+            } else {
+                vehiculos.remove(opcion - 1);
+                correcto = true;
+            }
+        } while (!correcto);
+    }
+
+    private static void agregarVehiculo() {
+        boolean correcto;
+        do {
+            System.out.printf("Ingrese la opcion del vehiculo a agregar:");
+            int opcion = sc.pedirNumero("1. Coche" +
+                    "\n2. Moto" +
+                    "\n3. Atras" +
+                    "\nOpcion: ");
+            switch (opcion) {
+                case 1:
+                    vehiculos.add(agregarCoche());
+                    correcto = true;
+                    break;
+                case 2:
+                    vehiculos.add(agregarMoto());
+                    correcto = true;
+                    break;
+                case 3:
+                    correcto = true;
+                    break;
+                default:
+                    correcto = false;
+                    break;
+            }
+        } while (!correcto);
+    }
+
+    private static Coche agregarCoche() {
+        boolean correcto;
+        Marca marca = null;
+        do {
+            System.out.printf("Ingrese la marca: ");
+            int marcas = sc.pedirNumero("1.KIA,\n" +
+                    "2. MERCEDES,\n" +
+                    "3. FORD,\n" +
+                    "4. AUDI,\n" +
+                    "5. BMW" +
+                    "\nOpcion: ");
+            switch (marcas) {
+                case 1:
+                    marca = Marca.KIA;
+                    correcto = true;
+                    break;
+                case 2:
+                    marca = Marca.MERCEDES;
+                    correcto = true;
+                    break;
+                case 3:
+                    marca = Marca.FORD;
+                    correcto = true;
+                    break;
+                case 4:
+                    marca = Marca.AUDI;
+                    correcto = true;
+                    break;
+                case 5:
+                    marca = Marca.BMW;
+                    correcto = true;
+                    break;
+                default:
+                    System.out.printf("Ingrese una opcion correcta.");
+                    correcto = false;
+                    break;
+            }
+        } while (!correcto);
+        double precio = sc.pedirDecimal("Ingrese el precio: ");
+        int num_puertas = sc.pedirNumero("Ingrese el numero de puertas: ");
+        boolean airbags = false;
+        do {
+            char opcion = sc.pedirLetra("¿Tiene airbags? Si (s) / No (n): ");
+            switch (opcion) {
+                case 's':
+                case 'S':
+                    airbags = true;
+                    correcto = true;
+                    break;
+                case 'n':
+                case 'N':
+                    correcto = true;
+                    break;
+                default:
+                    correcto = false;
+                    break;
+            }
+        } while (!correcto);
+
+        return new Coche(marca, precio, num_puertas, airbags);
+    }
+
+    private static Moto agregarMoto() {
+        boolean correcto;
+        Marca marca = null;
+        do {
+            System.out.printf("Ingrese la marca: ");
+            int marcas = sc.pedirNumero("1.DUCATI,\n" +
+                    "2. YAMAHA,\n" +
+                    "3. KAWASAKI,\n" +
+                    "4. HONDA," +
+                    "\nOpcion: ");
+            switch (marcas) {
+                case 1:
+                    marca = Marca.DUCATI;
+                    correcto = true;
+                    break;
+                case 2:
+                    marca = Marca.YAMAHA;
+                    correcto = true;
+                    break;
+                case 3:
+                    marca = Marca.KAWASAKI;
+                    correcto = true;
+                    break;
+                case 4:
+                    marca = Marca.HONDA;
+                    correcto = true;
+                    break;
+                default:
+                    System.out.printf("Ingrese una opcion correcta.");
+                    correcto = false;
+                    break;
+            }
+        } while (!correcto);
+        double precio = sc.pedirDecimal("Ingrese el precio: ");
+        int cilindrada = sc.pedirNumero("Ingrese el numero de cilindrada: ");
+        boolean sidecar = false;
+        do {
+            char opcion = sc.pedirLetra("¿Tiene sidecar? Si (s) / No (n): ");
+            switch (opcion) {
+                case 's':
+                case 'S':
+                    sidecar = true;
+                    correcto = true;
+                    break;
+                case 'n':
+                case 'N':
+                    correcto = true;
+                    break;
+                default:
+                    correcto = false;
+                    break;
+            }
+        } while (!correcto);
+        return new Moto(marca, precio, cilindrada, sidecar);
+    }
+
     private static void comprarVehiculo(Persona persona) {
         boolean correcto;
         do {
@@ -162,6 +388,7 @@ public class GestionConcesionario {
             switch (opcion) {
                 case 's':
                 case 'S':
+                    establecerCompra(persona);
                     correcto = true;
                     break;
                 case 'n':
@@ -174,7 +401,77 @@ public class GestionConcesionario {
             }
 
         } while (!correcto);
+    }
 
+    private static void establecerCompra(Persona persona) {
+        if (persona instanceof Empleado) {
+            boolean cancelar = false;
+            while (!cancelar) {
+                System.out.println("Al ser empleado tiene un descuento del 15% en la compra.");
+                mostrarVehiculos();
+                int opcion = sc.pedirNumero("Selecciona el vehículo que deseas comprar (Digite -1 si quiere cancelar): ");
+                if (opcion == -1) {
+                    cancelar = true;
+                } else if (opcion <= 0 || opcion > vehiculos.size()) {
+                    System.out.println("Opción de vehiculo no válida");
+                } else {
+                    Vehiculo vehiculo = vehiculos.get(opcion - 1);
+                    persona.addVehiculo(vehiculo);
+                    vehiculos.remove(vehiculo);
+                    Factura factura = new Factura(contador, ((Empleado) persona).getNum_empleado(), ((Empleado) persona).getNum_empleado(), vehiculo);
+                    contador++;
+                    facturas.add(factura);
+                }
+            }
+        } else if (persona instanceof Cliente) {
+            boolean cancelar = false;
+            while (!cancelar) {
+                mostrarVehiculos();
+                int opcion = sc.pedirNumero("Selecciona el vehículo que deseas comprar (Digite -1 si quiere cancelar): ");
+                if (opcion == -1) {
+                    cancelar = true;
+                } else if (opcion <= 0 || opcion > vehiculos.size()) {
+                    System.out.println("Opción de vehiculo no válida");
+                } else {
+                    boolean existe;
+                    int num_empleado;
+                    do {
+                        mostrarEmpleados();
+                        num_empleado = sc.pedirNumero("Indique el número del empleado que le ha vendido el coche: \nEn caso de que no le haya atendido nadie, digite un 0.");
+                        if (num_empleado < 0) {
+                            System.out.println("No puede digitar una opcion negativa.");
+                            existe = false;
+                        } else {
+                            Empleado empleado_recuperado = null;
+                            if (num_empleado != 0) {
+                                for (Persona empleado : personas) {
+                                    if (empleado instanceof Empleado && ((Empleado) empleado).getNum_empleado() == num_empleado) {
+                                        empleado_recuperado = (Empleado) empleado;
+                                        break;
+                                    }
+                                }
+                                if (empleado_recuperado == null) {
+                                    System.out.println("No existe el empleado en la lista.");
+                                    existe = false;
+                                } else {
+                                    existe = true;
+                                }
+                            } else {
+                                existe = true;
+                            }
+                        }
+
+                    } while (!existe);
+
+                    Vehiculo vehiculo = vehiculos.get(opcion - 1);
+                    persona.addVehiculo(vehiculo);
+                    vehiculos.remove(vehiculo);
+                    Factura factura = new Factura(contador, ((Cliente) persona).getNum_cliente(), num_empleado, vehiculo);
+                    contador++;
+                    facturas.add(factura);
+                }
+            }
+        }
     }
 
     private static void mostrarFacturas(Persona persona) {
@@ -194,45 +491,36 @@ public class GestionConcesionario {
     private static void mostrarVehiculos() {
         if (!vehiculos.isEmpty()) {
             System.out.println("******* MOSTRAR VEHICULOS *******");
-            System.out.println("******* MOTOS *******");
-            for (Vehiculo vehiculo : vehiculos) {
-                if (vehiculo instanceof Moto) {
-                    System.out.println(vehiculo);
-                }
-            }
-            System.out.println("******* COCHES *******");
-            for (Vehiculo vehiculo : vehiculos) {
-                if (vehiculo instanceof Coche) {
-                    System.out.println(vehiculo);
-                }
+            for (int i = 0; i < vehiculos.size(); i++) {
+                System.out.printf("%d. %s %n", i + 1, vehiculos.get(i));
             }
         } else {
             System.out.println("No existen vehiculos");
         }
     }
 
-    private static void inicioCliente() throws HerenciaException {
+    private static Cliente inicioCliente() throws HerenciaException {
         mostrarClientes();
         int opcion = sc.pedirNumero("Ingrese el numero del cliente: ");
         for (Persona persona : personas) {
             if (persona instanceof Cliente) {
                 if (((Cliente) persona).getNum_cliente() == opcion) {
                     System.out.printf("Iniciando Sesion.... con cliente: %d", opcion);
-                    return;
+                    return (Cliente) persona;
                 }
             }
         }
         throw new HerenciaException("No existe un cliente con ese número.");
     }
 
-    private static void inicioEmpleado() throws HerenciaException {
+    private static Empleado inicioEmpleado() throws HerenciaException {
         mostrarEmpleados();
         int opcion = sc.pedirNumero("Ingrese el numero del empleado: ");
         for (Persona persona : personas) {
             if (persona instanceof Empleado) {
                 if (((Empleado) persona).getNum_empleado() == opcion) {
                     System.out.printf("Iniciando Sesion.... con empleado: %d", opcion);
-                    return;
+                    return (Empleado) persona;
                 }
             }
         }
