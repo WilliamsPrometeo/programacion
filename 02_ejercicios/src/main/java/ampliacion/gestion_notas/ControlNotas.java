@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class ControlNotas {
 
+    //Instancia de un atributo estático para su uso en el controlador
     private static final MyScanner scanner = new MyScanner();
 
     public static void main(String[] args) {
