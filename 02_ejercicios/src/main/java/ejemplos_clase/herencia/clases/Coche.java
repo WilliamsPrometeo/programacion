@@ -84,7 +84,7 @@ public class Coche extends Vehiculo {
      */
     @Override
     public String mostrar() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         String fecha_formateada = super.getFecha_matriculacion().format(formatter);
         return String.format("Coche: %s, %.2f, %d, %s", super.getMarca(), super.getPrecio(), num_puertas, fecha_formateada);
     }

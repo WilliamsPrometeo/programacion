@@ -17,7 +17,7 @@ public class GestionConcesionario {
 
     public static void main(String[] args) {
         rellenarVehiculos();
-
+        mostrarVehiculos();
     }
 
     private static void rellenarVehiculos() {
@@ -492,7 +492,7 @@ public class GestionConcesionario {
         if (!vehiculos.isEmpty()) {
             System.out.println("******* MOSTRAR VEHICULOS *******");
             for (int i = 0; i < vehiculos.size(); i++) {
-                System.out.printf("%d. %s %n", i + 1, vehiculos.get(i));
+                System.out.printf("%d. %s %n", i + 1, vehiculos.get(i).mostrar());
             }
         } else {
             System.out.println("No existen vehiculos");
