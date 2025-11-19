@@ -1,4 +1,4 @@
-package ejemplos_clase.herencia.clases;
+package ejemplos_clase.herencia.concesionario.clases;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -68,7 +68,7 @@ public class Factura {
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         String fecha_formateada = getFecha_creacion().format(formatter);
-        String datos_vehiculo = getVehiculo().toString();
+        String datos_vehiculo = getVehiculo().mostrar();
         return String.format("Factura: %d, %d, %d, %8s, %s",  num_factura, num_cliente, num_empleado, fecha_formateada,  datos_vehiculo);
     }
 }

@@ -1,7 +1,8 @@
-package ejemplos_clase.herencia;
+package ejemplos_clase.herencia.concesionario;
 
-import ejemplos_clase.herencia.clases.*;
-import ejemplos_clase.herencia.enums.Marca;
+import ejemplos_clase.herencia.clases.Persona;
+import ejemplos_clase.herencia.concesionario.clases.*;
+import ejemplos_clase.herencia.concesionario.enums.Marca;
 import ejemplos_clase.herencia.exception.HerenciaException;
 import recursos.MyScanner;
 
@@ -17,7 +18,7 @@ public class GestionConcesionario {
 
     public static void main(String[] args) {
         rellenarVehiculos();
-        mostrarVehiculos();
+        menuPrincipal();
     }
 
     private static void rellenarVehiculos() {
@@ -39,7 +40,7 @@ public class GestionConcesionario {
         boolean salir = false;
         while (!salir) {
             System.out.println("******* PROMETEO CONCESSIONARIO *******");
-            int opcion = sc.pedirNumero("1. Registro" +
+            int opcion = sc.pedirNumero("1. Inicio de Sesion" +
                     "\n2. Continuar" +
                     "\n3. Salir" +
                     "\nOpcion: ");
@@ -48,6 +49,7 @@ public class GestionConcesionario {
                     registro();
                     break;
                 case 2:
+                    continuar();
                     break;
                 case 3:
                     salir = true;
@@ -58,6 +60,31 @@ public class GestionConcesionario {
                     break;
             }
         }
+    }
+
+    public static void continuar() {
+        boolean correcto = false;
+        do {
+            System.out.println("******* PROMETEO CONCESSIONARIO *******");
+            int opcion = sc.pedirNumero("1. Mostrar vehiculos" +
+                    "\n2. Registrarse" +
+                    "\n3. Atras" +
+                    "\nOpcion: ");
+            switch (opcion) {
+                case 1:
+                    mostrarVehiculos();
+                    break;
+                case 2:
+                    registro();
+                    break;
+                case 3:
+                    correcto = true;
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    break;
+            }
+        } while (!correcto);
     }
 
     public static void registro() {
@@ -124,9 +151,9 @@ public class GestionConcesionario {
     }
 
     private static void menuCliente(Cliente cliente) {
-        boolean correcto;
+        boolean correcto = false;
         do {
-            System.out.printf("******* MENU CLIENTE  %d *******", cliente.getNum_cliente());
+            System.out.printf("%n******* MENU CLIENTE  %d *******%n", cliente.getNum_cliente());
             int opcion = sc.pedirNumero("1. Ver Facturas" +
                     "\n2. Comprar Vehiculo" +
                     "\n3. Mostrar catalogo" +
@@ -135,30 +162,27 @@ public class GestionConcesionario {
             switch (opcion) {
                 case 1:
                     mostrarFacturas(cliente);
-                    correcto = true;
                     break;
                 case 2:
                     comprarVehiculo(cliente);
-                    correcto = true;
                     break;
                 case 3:
                     mostrarVehiculos();
-                    correcto = true;
                     break;
                 case 4:
                     correcto = true;
                     break;
                 default:
-                    correcto = false;
+                    System.out.println("Opcion no valida.");
                     break;
             }
         } while (!correcto);
     }
 
     private static void menuEmpleado(Empleado empleado) {
-        boolean correcto;
+        boolean correcto = false;
         do {
-            System.out.printf("******* MENU EMPLEADO  %d *******", empleado.getNum_empleado());
+            System.out.printf("%n******* MENU EMPLEADO  %d *******%n", empleado.getNum_empleado());
             int opcion = sc.pedirNumero("1. Ver Facturas" +
                     "\n2. Comprar Vehiculo" +
                     "\n3. Gestionar Vehiculos" +
@@ -167,28 +191,25 @@ public class GestionConcesionario {
             switch (opcion) {
                 case 1:
                     mostrarFacturas(empleado);
-                    correcto = true;
                     break;
                 case 2:
                     comprarVehiculo(empleado);
-                    correcto = true;
                     break;
                 case 3:
                     gestionVehiculo();
-                    correcto = true;
                     break;
                 case 4:
                     correcto = true;
                     break;
                 default:
-                    correcto = false;
+                    System.out.println("Opcion no valida");
                     break;
             }
         } while (!correcto);
     }
 
     private static void gestionVehiculo() {
-        boolean correcto;
+        boolean correcto = false;
         do {
             System.out.println("******* GESTION DE VEHICULO *******");
             int opcion = sc.pedirNumero("1. Agregar Vehiculo" +
@@ -199,21 +220,18 @@ public class GestionConcesionario {
             switch (opcion) {
                 case 1:
                     agregarVehiculo();
-                    correcto = true;
                     break;
                 case 2:
                     eliminarVehiculo();
-                    correcto = true;
                     break;
                 case 3:
                     mostrarVehiculos();
-                    correcto = true;
                     break;
                 case 4:
                     correcto = true;
                     break;
                 default:
-                    correcto = false;
+                    System.out.println("Opcion no valida.");
                     break;
             }
 
@@ -238,7 +256,7 @@ public class GestionConcesionario {
     private static void agregarVehiculo() {
         boolean correcto;
         do {
-            System.out.printf("Ingrese la opcion del vehiculo a agregar:");
+            System.out.printf("%nIngrese la opcion del vehiculo a agregar:%n");
             int opcion = sc.pedirNumero("1. Coche" +
                     "\n2. Moto" +
                     "\n3. Atras" +
@@ -266,8 +284,8 @@ public class GestionConcesionario {
         boolean correcto;
         Marca marca = null;
         do {
-            System.out.printf("Ingrese la marca: ");
-            int marcas = sc.pedirNumero("1.KIA,\n" +
+            System.out.println("Ingrese la marca: ");
+            int marcas = sc.pedirNumero("1. KIA,\n" +
                     "2. MERCEDES,\n" +
                     "3. FORD,\n" +
                     "4. AUDI,\n" +
@@ -328,7 +346,7 @@ public class GestionConcesionario {
         boolean correcto;
         Marca marca = null;
         do {
-            System.out.printf("Ingrese la marca: ");
+            System.out.println("Ingrese la marca: ");
             int marcas = sc.pedirNumero("1.DUCATI,\n" +
                     "2. YAMAHA,\n" +
                     "3. KAWASAKI,\n" +
@@ -352,7 +370,7 @@ public class GestionConcesionario {
                     correcto = true;
                     break;
                 default:
-                    System.out.printf("Ingrese una opcion correcta.");
+                    System.out.println("Ingrese una opcion correcta.");
                     correcto = false;
                     break;
             }
@@ -383,7 +401,6 @@ public class GestionConcesionario {
     private static void comprarVehiculo(Persona persona) {
         boolean correcto;
         do {
-            mostrarVehiculos();
             char opcion = sc.pedirLetra("¿Quiere compar un vehiculo? Si (s) / No (n): ");
             switch (opcion) {
                 case 's':
@@ -421,6 +438,9 @@ public class GestionConcesionario {
                     Factura factura = new Factura(contador, ((Empleado) persona).getNum_empleado(), ((Empleado) persona).getNum_empleado(), vehiculo);
                     contador++;
                     facturas.add(factura);
+                    System.out.println("Vehiculo comprado en la compra: " + vehiculo.mostrar());
+                    System.out.println("Se eliminará del concesionario.");
+                    cancelar = true;
                 }
             }
         } else if (persona instanceof Cliente) {
@@ -469,23 +489,31 @@ public class GestionConcesionario {
                     Factura factura = new Factura(contador, ((Cliente) persona).getNum_cliente(), num_empleado, vehiculo);
                     contador++;
                     facturas.add(factura);
+                    System.out.println("Vehiculo comprado en la compra: " + vehiculo.mostrar());
+                    System.out.println("Se eliminará del concesionario.");
+                    cancelar = true;
                 }
             }
         }
     }
 
     private static void mostrarFacturas(Persona persona) {
-        for (Factura factura : facturas) {
-            if (persona instanceof Empleado) {
-                if (factura.getNum_empleado() == ((Empleado) persona).getNum_empleado()) {
-                    System.out.println(factura);
-                }
-            } else if (persona instanceof Cliente) {
-                if (factura.getNum_cliente() == ((Cliente) persona).getNum_cliente()) {
-                    System.out.println(factura);
+        if (facturas.isEmpty()) {
+            System.out.println("No hay facturas que mostrar.");
+        } else {
+            for (Factura factura : facturas) {
+                if (persona instanceof Empleado) {
+                    if (factura.getNum_empleado() == ((Empleado) persona).getNum_empleado()) {
+                        System.out.println(factura);
+                    }
+                } else if (persona instanceof Cliente) {
+                    if (factura.getNum_cliente() == ((Cliente) persona).getNum_cliente()) {
+                        System.out.println(factura);
+                    }
                 }
             }
         }
+
     }
 
     private static void mostrarVehiculos() {
@@ -519,7 +547,7 @@ public class GestionConcesionario {
         for (Persona persona : personas) {
             if (persona instanceof Empleado) {
                 if (((Empleado) persona).getNum_empleado() == opcion) {
-                    System.out.printf("Iniciando Sesion.... con empleado: %d", opcion);
+                    System.out.printf("Iniciando Sesion.... con empleado: %d%n", opcion);
                     return (Empleado) persona;
                 }
             }

@@ -1,5 +1,7 @@
 package ejemplos_clase.herencia.clases;
 
+import ejemplos_clase.herencia.concesionario.clases.Vehiculo;
+
 import java.util.ArrayList;
 
 /**

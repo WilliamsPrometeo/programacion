@@ -1,6 +1,6 @@
-package ejemplos_clase.herencia.clases;
+package ejemplos_clase.herencia.concesionario.clases;
 
-import ejemplos_clase.herencia.enums.Marca;
+import ejemplos_clase.herencia.concesionario.enums.Marca;
 
 import java.time.format.DateTimeFormatter;
 
