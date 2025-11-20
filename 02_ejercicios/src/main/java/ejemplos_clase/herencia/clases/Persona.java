@@ -1,5 +1,6 @@
 package ejemplos_clase.herencia.clases;
 
+import ejemplos_clase.herencia.banco.clases.Cuenta;
 import ejemplos_clase.herencia.concesionario.clases.Vehiculo;
 
 import java.util.ArrayList;
@@ -8,13 +9,14 @@ import java.util.ArrayList;
  * Clase Persona
  *
  * @author Profesor - Williams
- * @version 1.1
+ * @version 1.2
  */
 public class Persona {
     private String nombre;
     private String apellido;
     private int edad;
     private ArrayList<Vehiculo> vehiculos;
+    private Cuenta cuenta;
 
     /**
      * Constructor vacio de la clase Persona
@@ -109,6 +111,14 @@ public class Persona {
      */
     public void setVehiculos(ArrayList<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     /**
