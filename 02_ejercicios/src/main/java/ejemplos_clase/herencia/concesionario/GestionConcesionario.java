@@ -1,5 +1,7 @@
 package ejemplos_clase.herencia.concesionario;
 
+import ejemplos_clase.herencia.banco.GestionBanco;
+import ejemplos_clase.herencia.banco.clases.EmpleadoBanco;
 import ejemplos_clase.herencia.clases.Persona;
 import ejemplos_clase.herencia.concesionario.clases.*;
 import ejemplos_clase.herencia.concesionario.enums.Marca;
