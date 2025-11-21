@@ -21,14 +21,17 @@ public class Persona {
     /**
      * Constructor vacio de la clase Persona
      * Se inicializa la lista de vehiculos
+     * Se inicializa a nulo la cuenta
      */
     public Persona() {
         vehiculos = new ArrayList<>();
+        cuenta = null;
     }
 
     /**
      * Constructor principal de la clase Persona
      * Se inicializa la lista de vehiculos
+     * Se inicializa a nulo la cuenta
      *
      * @param nombre   Nombre de la persona
      * @param apellido Apellido de la persona
@@ -39,6 +42,7 @@ public class Persona {
         this.apellido = apellido;
         this.edad = edad;
         this.vehiculos = new ArrayList<>();
+        cuenta = null;
     }
 
     /**
@@ -123,6 +127,7 @@ public class Persona {
 
     /**
      * Metodo para añadir un Vehículo a la lista de Vehículos de la persona
+     *
      * @param vehiculo vehiculo añadido
      */
     public void addVehiculo(Vehiculo vehiculo) {
