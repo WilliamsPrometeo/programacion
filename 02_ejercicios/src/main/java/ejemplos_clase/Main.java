@@ -2,17 +2,11 @@ package ejemplos_clase;
 
 import recursos.MyScanner;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class Main {
 
-    private static final MyScanner scanner = new MyScanner();
+    private static final MyScanner sc = new MyScanner();
 
     public static void main(String[] args) {
 
