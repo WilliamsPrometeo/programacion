@@ -2,46 +2,31 @@ package ejemplos_clase;
 
 import recursos.MyScanner;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
-
     private static final MyScanner sc = new MyScanner();
 
     public static void main(String[] args) {
 
-//        LocalDateTime ahora = LocalDateTime.now();
-//        LocalDate ahora1 = LocalDate.now();
-//        LocalTime hora1 = LocalTime.now();
-//        System.out.println(ahora);
-//        System.out.println(ahora1);
-//        System.out.println(hora1);
-//
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-//        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("HH:mm:ss");
-//        String formato = formatter.format(ahora);
-//        String formato2 = formatter2.format(ahora1);
-//        String formato3 = formatter3.format(hora1);
-//        System.out.println(formato);
-//        System.out.println(formato2);
-//        System.out.println(formato3);
+        ArrayList<String> asignaturas = new ArrayList<>();
+        asignaturas.add("Programacion");
+        asignaturas.add("Bases de datos");
+        asignaturas.add("Ampliacion Programacion");
+        asignaturas.add("Lenguaje de marcas");
+        asignaturas.add("IPE");
+        asignaturas.add("Entornos de desarrollo");
 
-//        Random rand = new Random();
-//        int alumno = rand.nextInt(28 + 1);
-//        System.out.println("Alumno: " + alumno);
+        Map<String, Integer> notas = new HashMap<>();
 
-        Random rand = new Random();
+        for (String asignatura : asignaturas) {
+            notas.put(asignatura, sc.pedirNumero("Introduce la nota de " + asignatura + ": "));
+        }
 
-        System.out.println("=== ASIGNACIÓN DE VALORES PARA AnalisisComplejo ===\n");
-
-        // Asignación a 28 alumnos
-        for (int i = 0; i < 28; i++) {
-
-            // Generar número aleatorio entre 3 y 15 (ambos inclusive)
-            int valorAsignado = rand.nextInt(13) + 3;
-
-            System.out.printf("Alumno %02d → numero = %d%n", (i + 1), valorAsignado);
+        for (String key : notas.keySet()) {
+            System.out.println(key + ": " + notas.get(key));
         }
     }
 
