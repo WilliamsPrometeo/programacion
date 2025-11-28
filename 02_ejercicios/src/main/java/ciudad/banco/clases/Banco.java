@@ -1,7 +1,7 @@
-package ejemplos_clase.herencia.banco.clases;
+package ciudad.banco.clases;
 
-import ejemplos_clase.herencia.banco.enums.TipoBanco;
-import ejemplos_clase.herencia.concesionario.clases.Cliente;
+import ciudad.banco.enums.TipoBanco;
+import ciudad.clases.Cliente;
 
 import java.util.ArrayList;
 

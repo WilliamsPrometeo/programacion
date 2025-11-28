@@ -1,9 +1,7 @@
-package ejemplos_clase.herencia.banco.clases;
+package ciudad.banco.clases;
 
-import ejemplos_clase.herencia.banco.enums.TipoBanco;
-import ejemplos_clase.herencia.concesionario.clases.Empleado;
-
-import java.util.ArrayList;
+import ciudad.banco.enums.TipoBanco;
+import ciudad.concesionario.clases.Empleado;
 
 public class EmpleadoBanco extends Empleado {
     private TipoBanco sucursal;

@@ -1,4 +1,4 @@
-package ejemplos_clase.tienda.clases;
+package ciudad.tienda.clases;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +36,10 @@ public class StockTienda {
 
     @Override
     public String toString() {
-        return String.format("Tienda %s, %nStock: {%s}", tienda.getNombre(), stock);
+        String stockFormated = "";
+        for (Producto key : stock.keySet()) {
+            stockFormated = stockFormated.concat("\n\t - " + key.toString() + " | Stock: " + stock.get(key));
+        }
+        return String.format("Tienda %s, %nStock Productos: {%s%n}", tienda.getNombre(), stockFormated);
     }
 }

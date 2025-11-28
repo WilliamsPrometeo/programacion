@@ -1,14 +1,21 @@
-package ejemplos_clase.herencia.banco;
+package ciudad.banco;
 
-import ejemplos_clase.herencia.banco.clases.Banco;
-import ejemplos_clase.herencia.banco.clases.Cuenta;
-import ejemplos_clase.herencia.banco.clases.EmpleadoBanco;
-import ejemplos_clase.herencia.banco.enums.Divisa;
-import ejemplos_clase.herencia.concesionario.clases.Cliente;
+import ciudad.banco.clases.Banco;
+import ciudad.banco.clases.Cuenta;
+import ciudad.banco.clases.EmpleadoBanco;
+import ciudad.banco.enums.Divisa;
+import ciudad.banco.enums.TipoBanco;
+import ciudad.clases.Cliente;
 import recursos.MyScanner;
 
 import java.util.ArrayList;
 
+/**
+ * Controlador GestionBanco
+ *
+ * @author Profesor - Williams
+ * @version 1.0
+ */
 public class GestionBanco {
     private static final MyScanner sc = new MyScanner();
     private static Banco banco;
@@ -16,7 +23,20 @@ public class GestionBanco {
     private static ArrayList<Cliente> clientes = new ArrayList<>();
     private static int num_cuenta = 111;
 
-    public static void main(String[] args) {
+    public GestionBanco() {
+        empleados = inicializarEmpleados();
+    }
+
+    private static ArrayList<EmpleadoBanco> inicializarEmpleados() {
+        ArrayList<EmpleadoBanco> listaEmpleados = new ArrayList<>();
+        listaEmpleados.add(new EmpleadoBanco("Pepe", "Gonzalez", 30, 1234, TipoBanco.BBVA));
+        listaEmpleados.add(new EmpleadoBanco("Juan", "Perez", 50, 1235, TipoBanco.BANKINTER));
+        listaEmpleados.add(new EmpleadoBanco("Adam", "Perez", 20, 1111, TipoBanco.BNP_PARIBAS));
+        listaEmpleados.add(new EmpleadoBanco("Cristiano", "Ronaldo", 48, 7777, TipoBanco.SANTANDER));
+        return listaEmpleados;
+    }
+
+    public void inicioSesionEmpleado() {
         boolean correcto;
         EmpleadoBanco empleado;
         do {
@@ -31,8 +51,12 @@ public class GestionBanco {
         menuEmpleado(empleado, clientes);
     }
 
-    public static ArrayList<EmpleadoBanco> getEmpleados() {
+    public ArrayList<EmpleadoBanco> getEmpleados() {
         return empleados;
+    }
+
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
     }
 
     private static EmpleadoBanco inicioEmpleado() {
@@ -106,7 +130,7 @@ public class GestionBanco {
         } while (!correcto);
     }
 
-    public static void gestionCliente(EmpleadoBanco empleado, Cliente cliente) {
+    public void gestionCliente(EmpleadoBanco empleado, Cliente cliente) {
         if (empleado!= null && cliente!=null) {
             menuEmpleado(empleado, cliente);
         } else {
@@ -200,7 +224,7 @@ public class GestionBanco {
         num_cuenta++;
     }
 
-    public static void gestionarCuenta(Cuenta cuenta) {
+    public void gestionarCuenta(Cuenta cuenta) {
         boolean correcto;
         do {
             System.out.println("=========GESTION BANCO==========");

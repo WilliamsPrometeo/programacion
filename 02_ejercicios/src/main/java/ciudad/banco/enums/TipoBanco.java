@@ -1,4 +1,4 @@
-package ejemplos_clase.herencia.banco.enums;
+package ciudad.banco.enums;
 
 public enum TipoBanco {
     BBVA,

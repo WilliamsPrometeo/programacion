@@ -1,7 +1,7 @@
-package ejemplos_clase.herencia.clases;
+package ciudad.clases;
 
-import ejemplos_clase.herencia.banco.clases.Cuenta;
-import ejemplos_clase.herencia.concesionario.clases.Vehiculo;
+import ciudad.banco.clases.Cuenta;
+import ciudad.concesionario.clases.Vehiculo;
 
 import java.util.ArrayList;
 

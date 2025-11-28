@@ -1,6 +1,6 @@
-package ejemplos_clase.herencia.banco.clases;
+package ciudad.banco.clases;
 
-import ejemplos_clase.herencia.banco.enums.Divisa;
+import ciudad.banco.enums.Divisa;
 
 /**
  * Clase Cuenta

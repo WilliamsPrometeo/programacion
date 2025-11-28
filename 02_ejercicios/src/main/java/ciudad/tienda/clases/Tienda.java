@@ -1,4 +1,4 @@
-package ejemplos_clase.tienda.clases;
+package ciudad.tienda.clases;
 
 import java.util.ArrayList;
 

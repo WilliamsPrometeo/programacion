@@ -1,6 +1,6 @@
-package ejemplos_clase.herencia.concesionario.clases;
+package ciudad.concesionario.clases;
 
-import ejemplos_clase.herencia.clases.Persona;
+import ciudad.clases.Persona;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

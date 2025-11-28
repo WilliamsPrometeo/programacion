@@ -1,4 +1,4 @@
-package ejemplos_clase.herencia.concesionario.enums;
+package ciudad.concesionario.enums;
 
 public enum Marca {
     KIA,

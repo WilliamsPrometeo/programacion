@@ -1,15 +1,20 @@
-package ejemplos_clase.herencia.concesionario;
+package ciudad.concesionario;
 
-import ejemplos_clase.herencia.banco.GestionBanco;
-import ejemplos_clase.herencia.banco.clases.EmpleadoBanco;
-import ejemplos_clase.herencia.clases.Persona;
-import ejemplos_clase.herencia.concesionario.clases.*;
-import ejemplos_clase.herencia.concesionario.enums.Marca;
-import ejemplos_clase.herencia.exception.HerenciaException;
+import ciudad.clases.Cliente;
+import ciudad.concesionario.clases.*;
+import ciudad.clases.Persona;
+import ciudad.concesionario.enums.Marca;
+import ciudad.concesionario.exception.HerenciaException;
 import recursos.MyScanner;
 
 import java.util.ArrayList;
 
+/**
+ * Controlador GestionConcesionario
+ *
+ * @author Profesor - Williams
+ * @version 2.0
+ */
 public class GestionConcesionario {
 
     private static final MyScanner sc = new MyScanner();
@@ -18,27 +23,20 @@ public class GestionConcesionario {
     private static ArrayList<Factura> facturas = new ArrayList<>();
     private static int contador = 1;
 
-    public static void main(String[] args) {
+    public GestionConcesionario() {
         rellenarVehiculos();
-        menuPrincipal();
     }
 
     private static void rellenarVehiculos() {
-        Vehiculo kia = new Coche(Marca.KIA, 14999.99, 5, true);
-        Vehiculo bmw = new Coche(Marca.BMW, 80000, 3, false);
-        Vehiculo mercedes = new Coche(Marca.MERCEDES, 40000, 5, true);
-        Vehiculo ducati = new Moto(Marca.DUCATI, 9999.99, 250, false);
-        Vehiculo yamaha = new Moto(Marca.YAMAHA, 15000, 250, false);
-        Vehiculo kawasaki = new Moto(Marca.KAWASAKI, 6000.59, 1000, true);
-        vehiculos.add(kia);
-        vehiculos.add(bmw);
-        vehiculos.add(mercedes);
-        vehiculos.add(ducati);
-        vehiculos.add(yamaha);
-        vehiculos.add(kawasaki);
+        vehiculos.add(new Coche(Marca.KIA, 14999.99, 5, true));
+        vehiculos.add(new Coche(Marca.BMW, 80000, 3, false));
+        vehiculos.add(new Coche(Marca.MERCEDES, 40000, 5, true));
+        vehiculos.add(new Moto(Marca.DUCATI, 9999.99, 250, false));
+        vehiculos.add(new Moto(Marca.YAMAHA, 15000, 250, false));
+        vehiculos.add(new Moto(Marca.KAWASAKI, 6000.59, 1000, true));
     }
 
-    public static void menuPrincipal() {
+    public void menuPrincipal() {
         boolean salir = false;
         while (!salir) {
             System.out.println("******* PROMETEO CONCESSIONARIO *******");

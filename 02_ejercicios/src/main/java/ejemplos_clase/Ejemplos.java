@@ -1,6 +1,5 @@
 package ejemplos_clase;
 
-import ejemplos_clase.herencia.clases.Persona;
 import recursos.MyScanner;
 
 public class Ejemplos {
