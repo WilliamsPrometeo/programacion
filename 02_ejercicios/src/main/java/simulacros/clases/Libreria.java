@@ -116,17 +116,18 @@ public class Libreria {
             usuario = null;
         }
         if (usuario != null) {
-            mostarLibros();
-            String titulo = sc.pideTexto("Introduce el titulo del libro: ");
-            libro = buscarLibro(titulo);
-            if (libro != null) {
-                disponibles.remove(libro);
-                prestamos.put(usuario, libro);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-                String fecha_formateada = LocalDateTime.now().format(formatter);
-                System.out.printf("Fecha de prestamo: %s del libro: %s", fecha_formateada, libro.getTitulo());
-            } else {
-                System.out.println("No hay ningun libro con ese titulo disponible!");
+            if (mostarLibros()) {
+                String titulo = sc.pideTexto("Introduce el titulo del libro: ");
+                libro = buscarLibro(titulo);
+                if (libro != null) {
+                    disponibles.remove(libro);
+                    prestamos.put(usuario, libro);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                    String fecha_formateada = LocalDateTime.now().format(formatter);
+                    System.out.printf("Fecha de prestamo: %s del libro: %s", fecha_formateada, libro.getTitulo());
+                } else {
+                    System.out.println("No hay ningun libro con ese titulo disponible!");
+                }
             }
         } else {
             System.out.println("No existe el usuario con ese DNI!");
@@ -134,7 +135,7 @@ public class Libreria {
         return (usuario != null && libro != null) ? "Libro prestado correctamente" : "Error en el proceso.";
     }
 
-    public void mostarLibros() {
+    public boolean mostarLibros() {
         if (!disponibles.isEmpty()) {
             for (Libro libro : disponibles) {
                 System.out.println(libro);
@@ -143,13 +144,13 @@ public class Libreria {
             do {
                 char opcion = sc.pedirLetra("¿Quiere filtrar por Género? (S/N)");
                 switch (opcion) {
-                    case 's':
                     case 'S':
+                    case 's':
                         filtroGenero();
                         correcto = true;
                         break;
-                    case 'n':
                     case 'N':
+                    case 'n':
                         correcto = true;
                         break;
                     default:
@@ -157,9 +158,10 @@ public class Libreria {
                         break;
                 }
             } while (!correcto);
-
+            return true;
         } else {
             System.out.println("No hay libros disponibles");
+            return false;
         }
     }
 
