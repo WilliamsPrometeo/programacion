@@ -96,49 +96,4 @@ public class Utilidades {
         return valores[opcion - 1];
     }
 
-    /**
-     * Ejecuta un menú genérico sin utilizar {@code switch}.
-     * <p>
-     * Las opciones del menú se almacenan en un {@code Map} donde:
-     * </p>
-     * <ul>
-     *   <li>La clave es el número de la opción</li>
-     *   <li>El valor es el texto que se muestra al usuario</li>
-     * </ul>
-     * <p>
-     * Las acciones asociadas a cada opción se almacenan en otro {@code Map}
-     * que relaciona el número de opciones con el código a ejecutar.
-     * </p>
-     * <p>
-     * Este metodo centraliza la lógica del menú y evita duplicar
-     * estructuras repetitivas en distintos programas.
-     * </p>
-     *
-     * @param titulo      título que se mostrará en la parte superior del menú
-     * @param opciones    mapa con las opciones del menú
-     * @param acciones    mapa con las acciones asociadas a cada opción
-     * @param opcionSalir número de la opción que finaliza el menú
-     */
-    public static void ejecutarMenu(
-            String titulo,
-            Map<Integer, String> opciones,
-            Map<Integer, Runnable> acciones,
-            int opcionSalir) {
-
-        int opcion;
-        do {
-            System.out.println(titulo);
-            imprimirMap(opciones);
-
-            opcion = sc.pedirNumero("Opción: ");
-
-            if (acciones.containsKey(opcion)) {
-                acciones.get(opcion).run();
-            } else if (opcion != opcionSalir) {
-                System.out.println("Opción no válida.");
-            }
-
-        } while (opcion != opcionSalir);
-    }
-
 }
