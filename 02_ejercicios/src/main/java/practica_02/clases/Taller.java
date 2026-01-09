@@ -4,6 +4,7 @@ import practica_02.enums.TipoServicio;
 import practica_02.enums.TipoVehiculo;
 import practica_02.execptions.VehiculoNoEncontrado;
 import recursos.MyScanner;
+import recursos.Utilidades;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +17,7 @@ import java.util.Map;
  * Permite gestionar vehículos, servicios disponibles y los trabajos realizados sobre cada vehículo.
  *
  * @author Profesor - Williams
- * @version 1.0
+ * @version 2.0
  */
 public class Taller {
     private static final MyScanner sc = new MyScanner();
@@ -104,34 +105,7 @@ public class Taller {
                     "caracteres.");
         } while (matricula.length() != 7);
         String modelo = sc.pideTexto("Introduce el modelo: ");
-        TipoVehiculo tipo = null;
-        boolean correcto;
-        do {
-            correcto = true;
-            int opcion = sc.pedirNumero("1. Turismo" +
-                    "\n2. Motocicleta" +
-                    "\n3. Fugoneta" +
-                    "\n4. Camion" +
-                    "\nEscoge el tipo del vehiculo: ");
-            switch (opcion) {
-                case 1:
-                    tipo = TipoVehiculo.TURISMO;
-                    break;
-                case 2:
-                    tipo = TipoVehiculo.MOTOCICLETA;
-                    break;
-                case 3:
-                    tipo = TipoVehiculo.FURGONETA;
-                    break;
-                case 4:
-                    tipo = TipoVehiculo.CAMION;
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-                    correcto = false;
-                    break;
-            }
-        } while (!correcto);
+        TipoVehiculo tipo = Utilidades.pedirEnum(TipoVehiculo.class, "Introduce el tipo de vehiculo");
         System.out.println("Vehiculo registrado correctamente!");
         vehiculos.add(new Vehiculo(matricula, modelo, tipo));
     }
@@ -146,38 +120,7 @@ public class Taller {
     public void registrarServicio() {
         String descripcion = sc.pideTexto("Introduce la descripción: ");
         String mecanico = sc.pideTexto("Introduce el nombre del mecánico: ");
-        TipoServicio tipo = null;
-        boolean correcto;
-        do {
-            correcto = true;
-            int opcion = sc.pedirNumero("1. Mantenimiento" +
-                    "\n2. Cambio aceite" +
-                    "\n3. Pintura" +
-                    "\n4. Frenos" +
-                    "\n5. Electricidad" +
-                    "\nIntroduce el tipo de servicio: ");
-            switch (opcion) {
-                case 1:
-                    tipo = TipoServicio.MANTENIMIENTO;
-                    break;
-                case 2:
-                    tipo = TipoServicio.CAMBIO_ACEITE;
-                    break;
-                case 3:
-                    tipo = TipoServicio.PINTURA;
-                    break;
-                case 4:
-                    tipo = TipoServicio.FRENOS;
-                    break;
-                case 5:
-                    tipo = TipoServicio.ELECTRICIDAD;
-                    break;
-                default:
-                    System.out.println("Opcion no valida!");
-                    correcto = false;
-                    break;
-            }
-        } while (!correcto);
+        TipoServicio tipo = Utilidades.pedirEnum(TipoServicio.class, "Introduce el tipo de servicio");
         System.out.println("Servicio registrado correctamente!");
         catalogoServicios.add(new Servicio(descripcion, mecanico, tipo));
     }
@@ -220,9 +163,7 @@ public class Taller {
      */
 
     public void mostrarVehiculos() {
-        for (Vehiculo vehiculo : vehiculos) {
-            System.out.println(vehiculo);
-        }
+        Utilidades.imprimirLista(vehiculos);
         boolean correcto;
         do {
             correcto = true;
@@ -248,38 +189,12 @@ public class Taller {
      * seleccionado por el usuario.
      */
     private void filtrar() {
-        TipoVehiculo tipo = null;
-        boolean correcto;
-        do {
-            correcto = true;
-            int opcion = sc.pedirNumero("1. Turismo" +
-                    "\n2. Motocicleta" +
-                    "\n3. Fugoneta" +
-                    "\n4. Camion" +
-                    "\nEscoge el tipo del vehiculo: ");
-            switch (opcion) {
-                case 1:
-                    tipo = TipoVehiculo.TURISMO;
-                    break;
-                case 2:
-                    tipo = TipoVehiculo.MOTOCICLETA;
-                    break;
-                case 3:
-                    tipo = TipoVehiculo.FURGONETA;
-                    break;
-                case 4:
-                    tipo = TipoVehiculo.CAMION;
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-                    correcto = false;
-                    break;
-            }
-        } while (!correcto);
-        for (Vehiculo vehiculo : vehiculos)
+        TipoVehiculo tipo = Utilidades.pedirEnum(TipoVehiculo.class, "Introduce el tipo de vehiculo");
+        for (Vehiculo vehiculo : vehiculos) {
             if (vehiculo.getTipo().equals(tipo)) {
                 System.out.println(vehiculo);
             }
+        }
     }
 
     /**

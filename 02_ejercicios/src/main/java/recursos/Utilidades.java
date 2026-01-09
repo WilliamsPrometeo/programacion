@@ -14,7 +14,7 @@ import java.util.Map;
  * </p>
  *
  * @author Profesor - Williams
- * @version 1.0
+ * @version 1.1
  */
 public class Utilidades {
 
@@ -31,8 +31,12 @@ public class Utilidades {
      * @param coleccion  lista con los elementos a imprimir
      */
     public static <T> void imprimirLista(ArrayList<T> coleccion) {
-        for (T elemento : coleccion) {
-            System.out.println(elemento);
+        if (!coleccion.isEmpty()) {
+            for (T elemento : coleccion) {
+                System.out.println(elemento);
+            }
+        } else {
+            System.out.println("Lista vacia");
         }
     }
 
