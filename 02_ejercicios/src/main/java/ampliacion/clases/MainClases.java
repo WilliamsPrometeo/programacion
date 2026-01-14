@@ -1,5 +1,6 @@
 package ampliacion.clases;
 
+import ampliacion.clases.enums.Color;
 import recursos.MyScanner;
 
 public class MainClases {
@@ -7,35 +8,27 @@ public class MainClases {
     private static final MyScanner sc = new MyScanner();
 
     public static void main(String[] args) {
-//        Persona persona1 = new Persona();
+
+//        Vehiculo vehiculo = new Vehiculo("Mercedes", 200, Color.AMARILLO);
 //
-//        System.out.println(persona1.getNombre());
-//        persona1.setNombre("Luis");
-//        System.out.println(persona1.getNombre());
-//        System.out.println(persona1.getApellido());
-//        System.out.println(persona1.getEdad());
+//        if (vehiculo.getColor() == Color.AMARILLO) {
+//            System.out.println("Tu vehiculo tiene una multa por amarillo");
+//        }
 //
-//        System.out.println(persona1);
+//        vehiculo.setColor(Color.BLANCO);
 //
-//        Persona persona2 = new Persona("David", "Gutierrez", 25);
-//        System.out.println(persona2.getNombre());
-//        System.out.println(persona2.getApellido());
-//        System.out.println(persona2.getEdad());
+//        System.out.println(vehiculo.getColor());
 
-        Vehiculo vehiculo = new Vehiculo("Mercedes", 200);
-        System.out.println(vehiculo);
+        Direccion direccion = new Direccion("Calle 1", 28054);
+        Persona persona = new Persona("Pepe", "Perez", 26, direccion);
+        Persona persona1 = new Persona("Paco", "Delucia", 50, new Direccion("Calle 2", 28040));
 
-        vehiculo.acelerar(50);
+        System.out.println(persona);
 
-        System.out.println(vehiculo);
+        Direccion aux = persona.getDireccion();
 
-        vehiculo.frenar(25);
-
-        System.out.println(vehiculo);
-
-        vehiculo.parar();
-
-        System.out.println(vehiculo);
+        System.out.println(aux.getCalle());
+        System.out.println(aux.getCod_postal());
 
     }
 }

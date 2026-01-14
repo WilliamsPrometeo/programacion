@@ -1,15 +1,19 @@
 package ampliacion.clases;
 
+import ampliacion.clases.enums.Color;
+
 public class Vehiculo {
     private String marca;
     private int velocidad;
+    private Color color;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String marca, int velocidad) {
+    public Vehiculo(String marca, int velocidad, Color color) {
         this.marca = marca;
         this.velocidad = velocidad;
+        this.color = color;
     }
 
     public String getMarca() {
@@ -28,11 +32,21 @@ public class Vehiculo {
         this.velocidad = velocidad;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return "Vehiculo: " +
+        return "Vehiculo{" +
                 "marca='" + marca + '\'' +
-                ", velocidad=" + velocidad;
+                ", velocidad=" + velocidad +
+                ", color=" + color +
+                '}';
     }
 
     //Metodo

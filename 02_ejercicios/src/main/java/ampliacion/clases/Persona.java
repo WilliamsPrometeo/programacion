@@ -5,6 +5,7 @@ public class Persona {
     private String nombre;
     private String apellido;
     private int edad;
+    private Direccion direccion;
 
     //Constructor/es
 
@@ -16,10 +17,11 @@ public class Persona {
     }
 
     //Constructor con parámetros
-    public Persona(String nombre, String apellido, int edad) {
+    public Persona(String nombre, String apellido, int edad, Direccion direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.direccion = direccion;
     }
 
     //Getter y Setters
@@ -48,6 +50,14 @@ public class Persona {
         this.edad = edad;
     }
 
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
     //toString
 
     @Override
@@ -56,6 +66,7 @@ public class Persona {
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", edad=" + edad +
+                ", direccion=" + direccion +
                 '}';
     }
 
