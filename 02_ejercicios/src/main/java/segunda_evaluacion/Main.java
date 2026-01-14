@@ -1,8 +1,12 @@
 package segunda_evaluacion;
 
+import ciudad.clases.Persona;
 import recursos.MyScanner;
+import recursos.Utilidades;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -11,58 +15,43 @@ public class Main {
 
     public static void main(String[] args) {
 
-        File origen = new File(RUTA + "images.jpg");
-        File destino = new File(RUTA + "otra.jpg");
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd-HHmm");
+        String fecha_formateada = now.format(formatter);
+        String ruta = fecha_formateada + ".txt";
 
-        if(!origen.exists()) {
-            System.out.println("El archivo no existe");
+        if (Utilidades.existeArchivo(ruta)) {
+            System.out.println("No te puedes quejar tanto, espera un minuto");
         } else {
-            copiar_archivo(origen, destino);
-        }
+            Utilidades.crearArchivoTexto(ruta, pedirDatos());
 
-        File origenTexto = new File(RUTA + "texto.txt");
-        File destinoTexto = new File(RUTA + "copia.txt");
-
-        if (!origenTexto.exists()) {
-            System.out.println("El archivo no existe");
-        } else {
-            copiarTexto(origenTexto, destinoTexto);
+            System.out.println("Tu queja tiene " + contarCaracteres(ruta) + " caracteres.");
         }
 
     }
 
-    private static void copiar_archivo(File origen, File destino) {
-        try (
-                FileInputStream fis = new FileInputStream(origen);
-                FileOutputStream fos = new FileOutputStream(destino);
-        ) {
-            int bytes;
-            while ((bytes = fis.read()) != -1) {
-                fos.write(bytes);
-            }
-
-            System.out.println("Archivo copiado correctamente");
-        } catch (IOException e) {
-            System.out.println("ERROR " + e.getMessage());
-        }
+    public static String pedirDatos() {
+        return sc.pideTexto("Ingrese el mensaje que desee enviar: ");
     }
 
-    public static void copiarTexto(File origen, File destino) {
+    public static int contarCaracteres(String ruta) {
+        int contador = 0;
 
-        try (
-                FileReader fr = new FileReader(origen);
-                FileWriter fw = new FileWriter(destino)
-        ) {
+        try (FileReader fr = new FileReader(RUTA + ruta)) {
+
             int caracter;
             while ((caracter = fr.read()) != -1) {
-                fw.write(caracter);
+                if (Character.isLetter(caracter)) {
+                    contador++;
+                }
             }
 
-            System.out.println("Texto copiado correctamente.");
-
         } catch (IOException e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("Error al leer el archivo");
+            return -1;
         }
+
+        return contador;
     }
 
 }

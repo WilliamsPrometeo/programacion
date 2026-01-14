@@ -1,5 +1,6 @@
 package recursos;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -14,11 +15,12 @@ import java.util.Map;
  * </p>
  *
  * @author Profesor - Williams
- * @version 1.1
+ * @version 2.0
  */
 public class Utilidades {
 
     private static final MyScanner sc = new MyScanner();
+    private static final String RUTA = "02_ejercicios/datos/";
 
     /**
      * Imprime por consola todos los elementos de una lista, uno por línea.
@@ -27,8 +29,8 @@ public class Utilidades {
      * quiere mostrar una colección por pantalla.
      * </p>
      *
-     * @param <T>        tipo de los elementos de la lista
-     * @param coleccion  lista con los elementos a imprimir
+     * @param <T>       tipo de los elementos de la lista
+     * @param coleccion lista con los elementos a imprimir
      */
     public static <T> void imprimirLista(ArrayList<T> coleccion) {
         if (!coleccion.isEmpty()) {
@@ -53,9 +55,9 @@ public class Utilidades {
      * y al valor sin realizar búsquedas adicionales.
      * </p>
      *
-     * @param <K>   tipo de la clave
-     * @param <V>   tipo del valor
-     * @param mapa  mapa que se desea imprimir
+     * @param <K>  tipo de la clave
+     * @param <V>  tipo del valor
+     * @param mapa mapa que se desea imprimir
      */
     public static <K, V> void imprimirMap(Map<K, V> mapa) {
         for (Map.Entry<K, V> entrada : mapa.entrySet()) {
@@ -76,10 +78,10 @@ public class Utilidades {
      * cada vez que se quiere elegir un valor de un enum.
      * </p>
      *
-     * @param <E>        tipo del enum
-     * @param tipoEnum  clase del enum que se quiere mostrar
-     * @param mensaje   texto que se mostrará antes del menú
-     * @return          valor del enum seleccionado por el usuario
+     * @param <E>      tipo del enum
+     * @param tipoEnum clase del enum que se quiere mostrar
+     * @param mensaje  texto que se mostrará antes del menú
+     * @return valor del enum seleccionado por el usuario
      */
     public static <E extends Enum<E>> E pedirEnum(
             Class<E> tipoEnum,
@@ -98,6 +100,73 @@ public class Utilidades {
         } while (opcion < 1 || opcion > valores.length);
 
         return valores[opcion - 1];
+    }
+
+    public static void copiarArchivo(String origen, String destino) {
+        File ruta_origen = new File(RUTA + origen);
+        File ruta_destino = new File(RUTA + destino);
+
+        if (!ruta_origen.exists()) {
+            System.out.println("El archivo de origen no existe");
+        } else {
+            try (
+                    FileInputStream fis = new FileInputStream(ruta_origen);
+                    FileOutputStream fos = new FileOutputStream(ruta_destino);
+            ) {
+                int bytes;
+                while ((bytes = fis.read()) != -1) {
+                    fos.write(bytes);
+                }
+
+                System.out.println("Archivo copiado correctamente");
+            } catch (IOException e) {
+                System.out.println("ERROR " + e.getMessage());
+            }
+        }
+
+    }
+
+
+    public static void copiarTexto(String origen, String destino) {
+
+        File ruta_origen = new File(RUTA + origen);
+        File ruta_destino = new File(RUTA + destino);
+
+        if (!ruta_origen.exists()) {
+            System.out.println("El archivo de origen no existe");
+        } else {
+            try (
+                    FileReader fr = new FileReader(ruta_origen);
+                    FileWriter fw = new FileWriter(ruta_destino)
+            ) {
+                int caracter;
+                while ((caracter = fr.read()) != -1) {
+                    fw.write(caracter);
+                }
+
+                System.out.println("Texto copiado correctamente.");
+
+            } catch (IOException e) {
+                System.out.println("ERROR: " + e.getMessage());
+            }
+        }
+
+    }
+
+    public static void crearArchivoTexto(String ruta, String contenido) {
+
+        File archivo = new File(RUTA + ruta);
+
+        try(FileWriter fw = new FileWriter(archivo);) {
+            fw.write(contenido);
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo");
+        }
+    }
+
+    public static boolean existeArchivo(String ruta) {
+        File archivo = new File(RUTA + ruta);
+        return archivo.exists();
     }
 
 }
