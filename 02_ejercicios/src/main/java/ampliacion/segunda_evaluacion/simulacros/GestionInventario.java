@@ -7,7 +7,6 @@ import ampliacion.segunda_evaluacion.simulacros.exceptions.PrecioInvalidoExcepti
 import recursos.MyScanner;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
