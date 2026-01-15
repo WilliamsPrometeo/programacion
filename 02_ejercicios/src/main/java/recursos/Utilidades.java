@@ -15,7 +15,7 @@ import java.util.Map;
  * </p>
  *
  * @author Profesor - Williams
- * @version 2.0
+ * @version 3.0
  */
 public class Utilidades {
 
@@ -167,6 +167,49 @@ public class Utilidades {
     public static boolean existeArchivo(String ruta) {
         File archivo = new File(RUTA + ruta);
         return archivo.exists();
+    }
+
+    public static void listarArchivos(String ruta) {
+        File directorio = new File(ruta);
+
+        if (directorio.exists() && directorio.isDirectory()) {
+            File[] archivos = directorio.listFiles();
+            if (archivos != null) {
+                for (File file : archivos) {
+                    if (file.isFile()) {
+                        System.out.printf("- %20s  | %5d bytes%n", file.getName(), file.length());
+                    }
+                }
+            } else {
+                System.out.println("Directorio vacio");
+            }
+        } else {
+            System.out.println("Esto no es un directorio");
+        }
+    }
+
+    public static void listarDirectorios(String ruta) {
+        File directorio = new File(ruta);
+        if (directorio.exists() && directorio.isDirectory()) {
+            File[] archivos = directorio.listFiles();
+            System.out.println(directorio.getPath() + ": ");
+            if (archivos != null && archivos.length > 0) {
+                for (File file : archivos) {
+                    if (file.isFile()) {
+                        System.out.printf("- %20s  | %5d bytes%n", file.getName(), file.length());
+                    }
+                }
+                for (File file : archivos) {
+                    if (file.isDirectory()) {
+                        listarDirectorios(directorio + "/" + file.getName());
+                    }
+                }
+            } else {
+                System.out.println("Directorio vacio");
+            }
+        } else {
+            System.out.println("Esto no es un directorio");
+        }
     }
 
 }

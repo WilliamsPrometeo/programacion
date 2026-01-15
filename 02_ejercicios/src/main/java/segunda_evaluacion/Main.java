@@ -15,20 +15,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd-HHmm");
-        String fecha_formateada = now.format(formatter);
-        String ruta = fecha_formateada + ".txt";
+        Utilidades.listarDirectorios(RUTA);
 
-        if (Utilidades.existeArchivo(ruta)) {
-            System.out.println("No te puedes quejar tanto, espera un minuto");
-        } else {
-            Utilidades.crearArchivoTexto(ruta, pedirDatos());
 
-            System.out.println("Tu queja tiene " + contarCaracteres(ruta) + " caracteres.");
-        }
+//        LocalDateTime now = LocalDateTime.now();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd-HHmm");
+//        String fecha_formateada = now.format(formatter);
+//        String ruta = fecha_formateada + ".txt";
+//
+//        if (Utilidades.existeArchivo(ruta)) {
+//            System.out.println("No te puedes quejar tanto, espera un minuto");
+//        } else {
+//            Utilidades.crearArchivoTexto(ruta, pedirDatos());
+//
+//            System.out.println("Tu queja tiene " + contarCaracteres(ruta) + " caracteres.");
+//        }
 
     }
+
+
 
     public static String pedirDatos() {
         return sc.pideTexto("Ingrese el mensaje que desee enviar: ");
