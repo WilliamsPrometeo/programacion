@@ -1,7 +1,9 @@
 package recursos;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -15,7 +17,7 @@ import java.util.Map;
  * </p>
  *
  * @author Profesor - Williams
- * @version 3.0
+ * @version 4.0
  */
 public class Utilidades {
 
@@ -177,7 +179,7 @@ public class Utilidades {
             if (archivos != null) {
                 for (File file : archivos) {
                     if (file.isFile()) {
-                        System.out.printf("- %20s  | %5d bytes%n", file.getName(), file.length());
+                        System.out.printf("- %20s  | %5d bytes | Fecha de modificación: %7s%n", file.getName(), file.length(), obtenerFechaModificacion(ruta + file.getName()));
                     }
                 }
             } else {
@@ -196,12 +198,12 @@ public class Utilidades {
             if (archivos != null && archivos.length > 0) {
                 for (File file : archivos) {
                     if (file.isFile()) {
-                        System.out.printf("- %20s  | %5d bytes%n", file.getName(), file.length());
+                        System.out.printf("- %20s  | %5d bytes | Fecha de modificación: %7s%n", file.getName(), file.length(), obtenerFechaModificacion(ruta + file.getName()));
                     }
                 }
                 for (File file : archivos) {
                     if (file.isDirectory()) {
-                        listarDirectorios(directorio + "/" + file.getName());
+                        listarDirectorios(directorio + "/" + file.getName() + "/");
                     }
                 }
             } else {
@@ -210,6 +212,25 @@ public class Utilidades {
         } else {
             System.out.println("Esto no es un directorio");
         }
+    }
+
+    public static String obtenerFechaModificacion(String ruta) {
+        File archivo = new File(ruta);
+        if (archivo.exists() && archivo.isFile()) {
+            long milis = archivo.lastModified();
+
+            Date fecha = new Date(milis);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+            return sdf.format(fecha);
+        }
+        return null;
+    }
+
+    public static boolean crearDirectorio(String ruta) {
+
+        return new File(ruta).mkdirs();
     }
 
 }

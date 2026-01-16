@@ -5,8 +5,10 @@ import recursos.MyScanner;
 import recursos.Utilidades;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Main {
 
@@ -15,7 +17,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Utilidades.listarDirectorios(RUTA);
+        String escritorio = "C:\\Users\\A4Profesor\\Desktop\\Prueba\\Prueba2";
+        //String lomismo = "C:/Users/A4Profesor/Desktop";
+
+        System.out.println(Utilidades.crearDirectorio(escritorio) ?  "Directorio creado correctamente" : "Error en la creación del directorio");
+
+        //Utilidades.listarArchivos(RUTA);
+        //Utilidades.listarDirectorios(RUTA);
 
 
 //        LocalDateTime now = LocalDateTime.now();
@@ -32,7 +40,6 @@ public class Main {
 //        }
 
     }
-
 
 
     public static String pedirDatos() {
