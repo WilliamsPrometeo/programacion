@@ -3,32 +3,37 @@ package ampliacion.clases;
 import ampliacion.clases.enums.Color;
 import recursos.MyScanner;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class MainClases {
 
     private static final MyScanner sc = new MyScanner();
 
     public static void main(String[] args) {
 
-//        Vehiculo vehiculo = new Vehiculo("Mercedes", 200, Color.AMARILLO);
-//
-//        if (vehiculo.getColor() == Color.AMARILLO) {
-//            System.out.println("Tu vehiculo tiene una multa por amarillo");
-//        }
-//
-//        vehiculo.setColor(Color.BLANCO);
-//
-//        System.out.println(vehiculo.getColor());
-
         Direccion direccion = new Direccion("Calle 1", 28054);
-        Persona persona = new Persona("Pepe", "Perez", 26, direccion);
-        Persona persona1 = new Persona("Paco", "Delucia", 50, new Direccion("Calle 2", 28040));
 
-        System.out.println(persona);
+        Persona persona1 = new Persona("Pepe", "Guzman", 26, direccion);
 
-        Direccion aux = persona.getDireccion();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy HH:mm");
 
-        System.out.println(aux.getCalle());
-        System.out.println(aux.getCod_postal());
+        System.out.println(persona1.getFecha_creacion().format(formatter));
+
+//        LocalDate fecha = LocalDate.now();
+//
+//        LocalTime hora = LocalTime.now();
+//
+//        LocalDateTime fecha_hora = LocalDateTime.now();
+//
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy HH:mm");
+//        String fecha_formateada = fecha_hora.format(formatter);
+//
+//        System.out.println(fecha);
+//        System.out.println(hora);
+//        System.out.println(fecha_formateada);
 
     }
 }

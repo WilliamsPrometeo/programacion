@@ -1,28 +1,32 @@
 package ampliacion.clases;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Persona {
     //Atributos
     private String nombre;
     private String apellido;
     private int edad;
     private Direccion direccion;
+    private LocalDateTime fecha_creacion;
 
     //Constructor/es
 
     //Constructor Vacio
     public Persona() {
-        this.nombre = "Carlos";
-        this.apellido = "Perez";
-        this.edad = 18;
     }
 
     //Constructor con parámetros
+
     public Persona(String nombre, String apellido, int edad, Direccion direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.direccion = direccion;
+        this.fecha_creacion = LocalDateTime.now();
     }
+
 
     //Getter y Setters
 
@@ -58,6 +62,13 @@ public class Persona {
         this.direccion = direccion;
     }
 
+    public LocalDateTime getFecha_creacion() {
+        return fecha_creacion;
+    }
+
+    public void setFecha_creacion(LocalDateTime fecha_creacion) {
+        this.fecha_creacion = fecha_creacion;
+    }
     //toString
 
     @Override
@@ -67,6 +78,7 @@ public class Persona {
                 ", apellido='" + apellido + '\'' +
                 ", edad=" + edad +
                 ", direccion=" + direccion +
+                ", fecha_nacimiento=" + fecha_creacion +
                 '}';
     }
 
