@@ -16,12 +16,18 @@ import java.util.Map;
  * El objetivo es reducir código duplicado y simplificar los métodos main.
  * </p>
  *
+ * <p><strong>Nota:</strong> Todos los métodos son estáticos, por lo que
+ * no es necesario crear objetos de esta clase.</p>
+ *
  * @author Profesor - Williams
  * @version 4.0
  */
 public class Utilidades {
 
+    /** Scanner personalizado para la entrada de datos por consola */
     private static final MyScanner sc = new MyScanner();
+
+    /** Ruta base donde se almacenan los archivos de trabajo */
     private static final String RUTA = "02_ejercicios/datos/";
 
     /**
@@ -51,11 +57,6 @@ public class Utilidades {
      * <pre>
      * clave -> valor
      * </pre>
-     * </p>
-     * <p>
-     * Se utiliza {@code entrySet()} para acceder directamente a la clave
-     * y al valor sin realizar búsquedas adicionales.
-     * </p>
      *
      * @param <K>  tipo de la clave
      * @param <V>  tipo del valor
@@ -104,6 +105,17 @@ public class Utilidades {
         return valores[opcion - 1];
     }
 
+    /**
+     * Copia un archivo binario desde un origen a un destino.
+     * <p>
+     * Utiliza {@link FileInputStream} y {@link FileOutputStream},
+     * por lo que es adecuado para copiar cualquier tipo de archivo
+     * (imágenes, ejecutables, etc.).
+     * </p>
+     *
+     * @param origen  nombre del archivo de origen (relativo a {@code RUTA})
+     * @param destino nombre del archivo de destino (relativo a {@code RUTA})
+     */
     public static void copiarArchivo(String origen, String destino) {
         File ruta_origen = new File(RUTA + origen);
         File ruta_destino = new File(RUTA + destino);
@@ -125,10 +137,18 @@ public class Utilidades {
                 System.out.println("ERROR " + e.getMessage());
             }
         }
-
     }
 
-
+    /**
+     * Copia el contenido de un archivo de texto carácter a carácter.
+     * <p>
+     * Utiliza {@link FileReader} y {@link FileWriter}, por lo que
+     * debe usarse únicamente con archivos de texto plano.
+     * </p>
+     *
+     * @param origen  archivo de texto de origen
+     * @param destino archivo de texto de destino
+     */
     public static void copiarTexto(String origen, String destino) {
 
         File ruta_origen = new File(RUTA + origen);
@@ -152,9 +172,17 @@ public class Utilidades {
                 System.out.println("ERROR: " + e.getMessage());
             }
         }
-
     }
 
+    /**
+     * Crea un archivo de texto y escribe el contenido indicado.
+     * <p>
+     * Si el archivo ya existe, su contenido será sobrescrito.
+     * </p>
+     *
+     * @param ruta      ruta y nombre del archivo
+     * @param contenido texto que se escribirá en el archivo
+     */
     public static void crearArchivoTexto(String ruta, String contenido) {
 
         File archivo = new File(RUTA + ruta);
@@ -166,11 +194,26 @@ public class Utilidades {
         }
     }
 
+    /**
+     * Comprueba si un archivo existe.
+     *
+     * @param ruta ruta del archivo a comprobar
+     * @return {@code true} si el archivo existe, {@code false} en caso contrario
+     */
     public static boolean existeArchivo(String ruta) {
         File archivo = new File(RUTA + ruta);
         return archivo.exists();
     }
 
+    /**
+     * Lista los archivos de un directorio (sin entrar en subdirectorios).
+     * <p>
+     * Para cada archivo se muestra:
+     * nombre, tamaño en bytes y fecha de última modificación.
+     * </p>
+     *
+     * @param ruta ruta del directorio a listar
+     */
     public static void listarArchivos(String ruta) {
         File directorio = new File(ruta);
 
@@ -179,7 +222,12 @@ public class Utilidades {
             if (archivos != null) {
                 for (File file : archivos) {
                     if (file.isFile()) {
-                        System.out.printf("- %20s  | %5d bytes | Fecha de modificación: %7s%n", file.getName(), file.length(), obtenerFechaModificacion(ruta + file.getName()));
+                        System.out.printf(
+                                "- %20s | %5d bytes | Fecha de modificación: %7s%n",
+                                file.getName(),
+                                file.length(),
+                                obtenerFechaModificacion(ruta + file.getName())
+                        );
                     }
                 }
             } else {
@@ -190,6 +238,15 @@ public class Utilidades {
         }
     }
 
+    /**
+     * Lista de forma recursiva los archivos de un directorio y sus subdirectorios.
+     * <p>
+     * Primero muestra los archivos del directorio actual y después
+     * entra en cada subdirectorio.
+     * </p>
+     *
+     * @param ruta ruta del directorio inicial
+     */
     public static void listarDirectorios(String ruta) {
         File directorio = new File(ruta);
         if (directorio.exists() && directorio.isDirectory()) {
@@ -198,7 +255,12 @@ public class Utilidades {
             if (archivos != null && archivos.length > 0) {
                 for (File file : archivos) {
                     if (file.isFile()) {
-                        System.out.printf("- %20s  | %5d bytes | Fecha de modificación: %7s%n", file.getName(), file.length(), obtenerFechaModificacion(ruta + file.getName()));
+                        System.out.printf(
+                                "- %20s | %5d bytes | Fecha de modificación: %7s%n",
+                                file.getName(),
+                                file.length(),
+                                obtenerFechaModificacion(ruta + file.getName())
+                        );
                     }
                 }
                 for (File file : archivos) {
@@ -214,23 +276,32 @@ public class Utilidades {
         }
     }
 
+    /**
+     * Obtiene la fecha de última modificación de un archivo.
+     *
+     * @param ruta ruta del archivo
+     * @return fecha formateada en {@code dd/MM/yyyy HH:mm} o {@code null}
+     * si el archivo no existe
+     */
     public static String obtenerFechaModificacion(String ruta) {
         File archivo = new File(ruta);
         if (archivo.exists() && archivo.isFile()) {
             long milis = archivo.lastModified();
-
             Date fecha = new Date(milis);
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
             return sdf.format(fecha);
         }
         return null;
     }
 
+    /**
+     * Crea un directorio y todos los subdirectorios necesarios.
+     *
+     * @param ruta ruta del directorio a crear
+     * @return {@code true} si se creó correctamente o ya existía,
+     * {@code false} en caso de error
+     */
     public static boolean crearDirectorio(String ruta) {
-
         return new File(ruta).mkdirs();
     }
-
 }
