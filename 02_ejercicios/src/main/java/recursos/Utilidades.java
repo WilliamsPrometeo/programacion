@@ -304,4 +304,9 @@ public class Utilidades {
     public static boolean crearDirectorio(String ruta) {
         return new File(ruta).mkdirs();
     }
+
+    public static boolean existDirectory(String ruta) {
+        File directorio = new File(ruta);
+        return directorio.exists();
+    }
 }
