@@ -9,7 +9,7 @@ public class Persona {
     private String apellido;
     private int edad;
     private Direccion direccion;
-    private LocalDateTime fecha_creacion;
+    private LocalDate fecha_creacion;
 
     //Constructor/es
 
@@ -24,9 +24,16 @@ public class Persona {
         this.apellido = apellido;
         this.edad = edad;
         this.direccion = direccion;
-        this.fecha_creacion = LocalDateTime.now();
+        this.fecha_creacion = LocalDate.now();
     }
 
+    public Persona(String nombre, String apellido, int edad, Direccion direccion, LocalDate fecha_creacion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.fecha_creacion = fecha_creacion;
+    }
 
     //Getter y Setters
 
@@ -62,24 +69,18 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public LocalDateTime getFecha_creacion() {
+    public LocalDate getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(LocalDateTime fecha_creacion) {
+    public void setFecha_creacion(LocalDate fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
     //toString
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                ", direccion=" + direccion +
-                ", fecha_nacimiento=" + fecha_creacion +
-                '}';
+        return String.format("Persona con nombre: %s y apellido: %s", nombre, apellido);
     }
 
 
