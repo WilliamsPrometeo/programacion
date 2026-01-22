@@ -2,13 +2,18 @@ package segunda_evaluacion.libreria;
 
 import recursos.MyScanner;
 import recursos.Utilidades;
+import segunda_evaluacion.libreria.clases.Direccion;
 import segunda_evaluacion.libreria.clases.Libro;
+import segunda_evaluacion.libreria.clases.Persona;
 import segunda_evaluacion.libreria.clases.enums.Genero;
+import segunda_evaluacion.libreria.clases.enums.Provincia;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -145,6 +150,32 @@ public class GestionLibreria {
         }
     }
 
+    public static void crearArchivoPrestamo(Libro libro) {
+        String ruta = System.getProperty("user.home") + "/Desktop/DAM/simulacros/";
+        if (comprobarDirectorio(ruta)) {
+            LocalDateTime fecha =  LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyHHmm");
+            String fecha_formateada = formatter.format(fecha);
+            File archivo = new File(ruta + libro.getIsbn() + "-" + fecha_formateada + ".txt");
+
+            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+            try (FileWriter fw = new FileWriter(archivo)) {
+                fw.write("----- PRESTAMO -----\n");
+                fw.write("Fecha prestamo: " + formatter2.format(fecha) + "\n");
+                fw.write("Libro:\n");
+                fw.write("\tISBN: " + libro.getIsbn() + "\n");
+                fw.write("\tTitulo: " + libro.getTitulo() + "\n");
+                fw.write("\tAutor: " + libro.getAutor() + "\n");
+                fw.write("-----------------------");
+            } catch (IOException e) {
+                System.out.println("Error al crear el archivo de prestamo!" + e.getMessage());
+            }
+        } else {
+            System.out.println("Algo ha fallado.");
+        }
+    }
+
     public static void registrarPrestamo(Libro libro) {
         String ruta = System.getProperty("user.home") + "/Desktop/DAM/simulacros/";
         if (comprobarDirectorio(ruta)) {
@@ -168,7 +199,7 @@ public class GestionLibreria {
         }
     }
 
-    public static boolean comprobarDirectorio(String ruta) {
+    private static boolean comprobarDirectorio(String ruta) {
         if (Utilidades.existDirectory(ruta)) {
             return true;
         } else {
