@@ -2,11 +2,8 @@ package segunda_evaluacion.libreria;
 
 import recursos.MyScanner;
 import recursos.Utilidades;
-import segunda_evaluacion.libreria.clases.Direccion;
 import segunda_evaluacion.libreria.clases.Libro;
-import segunda_evaluacion.libreria.clases.Persona;
 import segunda_evaluacion.libreria.clases.enums.Genero;
-import segunda_evaluacion.libreria.clases.enums.Provincia;
 
 import java.io.File;
 import java.io.FileWriter;
