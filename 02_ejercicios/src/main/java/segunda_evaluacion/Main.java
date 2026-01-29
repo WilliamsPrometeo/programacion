@@ -8,62 +8,48 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Main {
 
     private static final MyScanner sc = new MyScanner();
-    private static final String RUTA = "02_ejercicios/datos/";
+    private static ArrayList<String> lineas = new ArrayList<>();
 
     public static void main(String[] args) {
-
-        String escritorio = "C:\\Users\\A4Profesor\\Desktop\\Prueba\\Prueba2";
-        //String lomismo = "C:/Users/A4Profesor/Desktop";
-
-        System.out.println(Utilidades.crearDirectorio(escritorio) ?  "Directorio creado correctamente" : "Error en la creación del directorio");
-
-        //Utilidades.listarArchivos(RUTA);
-        //Utilidades.listarDirectorios(RUTA);
-
-
-//        LocalDateTime now = LocalDateTime.now();
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd-HHmm");
-//        String fecha_formateada = now.format(formatter);
-//        String ruta = fecha_formateada + ".txt";
-//
-//        if (Utilidades.existeArchivo(ruta)) {
-//            System.out.println("No te puedes quejar tanto, espera un minuto");
-//        } else {
-//            Utilidades.crearArchivoTexto(ruta, pedirDatos());
-//
-//            System.out.println("Tu queja tiene " + contarCaracteres(ruta) + " caracteres.");
-//        }
-
-    }
-
-
-    public static String pedirDatos() {
-        return sc.pideTexto("Ingrese el mensaje que desee enviar: ");
-    }
-
-    public static int contarCaracteres(String ruta) {
-        int contador = 0;
-
-        try (FileReader fr = new FileReader(RUTA + ruta)) {
-
-            int caracter;
-            while ((caracter = fr.read()) != -1) {
-                if (Character.isLetter(caracter)) {
-                    contador++;
-                }
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo");
-            return -1;
+        guardarArchivoEnLista();
+        for (String s : lineas) {
+            System.out.println("Linea: " + s);
         }
+    }
 
-        return contador;
+    private static void guardarArchivoEnLista() {
+        String  ruta = System.getProperty("user.home") + "/Desktop/DAM/simulacros/";
+        if (comprobarDirectorio(ruta)) {
+            File archivo = new File(ruta + "bufferer.txt");
+            if (archivo.exists()) {
+                try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+                    String manolo;
+                    while ((manolo = br.readLine()) != null) {
+                        lineas.add(manolo);
+                    }
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+            } else  {
+                System.out.println("El archivo no existe");
+            }
+        } else {
+            System.out.println("Error al leer el directorio");
+        }
+    }
+
+    private static boolean comprobarDirectorio(String ruta) {
+        if (Utilidades.existDirectory(ruta)) {
+            return true;
+        } else {
+            return Utilidades.crearDirectorio(ruta);
+        }
     }
 
 }
