@@ -4,6 +4,7 @@ import recursos.MyScanner;
 import recursos.Utilidades;
 import segunda_evaluacion.libreria.clases.Libro;
 import segunda_evaluacion.libreria.clases.enums.Genero;
+import segunda_evaluacion.libreria.persistencia.FicheroLibro;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -18,14 +20,20 @@ import java.util.Map;
 public class GestionLibreria {
 
     private static final MyScanner sc = new MyScanner();
-    private static ArrayList<Libro> libros = new ArrayList<>();
-    private static Map<Libro, Integer> stock = new LinkedHashMap<>();
+    private static ArrayList<Libro> libros;
+    private static Map<Libro, Integer> stock;
 
     public static void main(String[] args) {
         menu();
     }
 
+    public static void init() {
+        libros = FicheroLibro.recuperarLibros();
+        stock = FicheroLibro.recuperarStock();
+    }
+
     public static void menu() {
+        init();
         boolean exit;
         do {
             exit = false;
@@ -35,6 +43,7 @@ public class GestionLibreria {
                     "\n3. Gestionar stock libros" +
                     "\n4. Prestar libro" +
                     "\n5. Salir" +
+                    "\n6. Guardar" +
                     "\nInserte la opcion que desee: ");
             switch (opcion) {
                 case 1:
@@ -51,7 +60,14 @@ public class GestionLibreria {
                     break;
                 case 5:
                     System.out.println("Saliendo ....");
+                    FicheroLibro.guardarLibros(libros);
+                    FicheroLibro.guardarStock(stock);
                     exit = true;
+                    break;
+                case 6:
+                    System.out.println("Guardando ....");
+                    FicheroLibro.guardarLibros(libros);
+                    FicheroLibro.guardarStock(stock);
                     break;
                 default:
                     System.out.println("Opcion no valida!");
@@ -68,8 +84,7 @@ public class GestionLibreria {
         String titulo = sc.pideTexto("Introduce el titulo: ");
         String autor = sc.pideTexto("Introduce el autor: ");
         Genero genero = Utilidades.pedirEnum(Genero.class, "Introduce el genero: ");
-        String fecha_publicacion =  sc.pideTexto("Introduce la fecha publicacion (YYYY-MM-DD): ");
-        LocalDate fecha = LocalDate.parse(fecha_publicacion);
+        LocalDate fecha = getFecha();
 
         Libro libro = new Libro(isbn, titulo, autor, genero, fecha);
 
@@ -83,6 +98,26 @@ public class GestionLibreria {
 
         int stock_libro = sc.pedirNumero("Introduce el stock que desea agregar: ");
         stock.put(libro, stock_libro);
+    }
+
+    public static LocalDate getFecha() {
+        boolean correcto;
+        LocalDate fecha = null;
+        do {
+            correcto = true;
+            String fecha_string = sc.pideTexto("Introduce la fecha (YYYY-MM-DD): ");
+            try {
+                fecha = LocalDate.parse(fecha_string);
+                if (fecha.isAfter(LocalDate.now()) || fecha.getYear() < 1200) {
+                    System.out.println("La fecha tiene que estar entre el 1200 y el " + LocalDate.now().getYear());
+                    correcto = false;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println(e.getMessage());
+                correcto = false;
+            }
+        } while (!correcto);
+        return fecha;
     }
 
     public static boolean validarIsbn(String isbn) {
@@ -150,7 +185,7 @@ public class GestionLibreria {
     public static void crearArchivoPrestamo(Libro libro) {
         String ruta = System.getProperty("user.home") + "/Desktop/DAM/simulacros/";
         if (comprobarDirectorio(ruta)) {
-            LocalDateTime fecha =  LocalDateTime.now();
+            LocalDateTime fecha = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyHHmm");
             String fecha_formateada = formatter.format(fecha);
             File archivo = new File(ruta + libro.getIsbn() + "-" + fecha_formateada + ".txt");

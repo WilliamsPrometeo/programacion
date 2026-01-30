@@ -2,10 +2,14 @@ package segunda_evaluacion.libreria.clases;
 
 import segunda_evaluacion.libreria.clases.enums.Genero;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Libro {
+public class Libro implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String isbn;
     private String titulo;
     private String autor;
