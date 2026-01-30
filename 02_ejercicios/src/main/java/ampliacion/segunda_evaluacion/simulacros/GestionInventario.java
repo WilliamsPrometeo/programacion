@@ -4,43 +4,56 @@ import ampliacion.segunda_evaluacion.simulacros.clases.Producto;
 import ampliacion.segunda_evaluacion.simulacros.exceptions.CantidadInvalidaException;
 import ampliacion.segunda_evaluacion.simulacros.exceptions.CodigoInvalidoException;
 import ampliacion.segunda_evaluacion.simulacros.exceptions.PrecioInvalidoException;
+import ampliacion.segunda_evaluacion.simulacros.persistencia.FicheroProducto;
 import recursos.MyScanner;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GestionInventario {
 
     private static final MyScanner sc = new MyScanner();
-    private static ArrayList<Producto> productos = new ArrayList<>();
-    private static Map<Producto, Integer> inventario = new LinkedHashMap<>();
+    private static ArrayList<Producto> productos;
+    private static Map<Producto, Integer> inventario;
 
     public static void main(String[] args) {
         menu();
     }
 
+    public static void init() {
+        productos = FicheroProducto.getProductos();
+        inventario = FicheroProducto.getInventario();
+    }
+
     public static void menu() {
+        init();
         System.out.println("==== GESTION INVENTARIO ==== ");
         boolean exit;
         do {
             exit = false;
             int opcion = sc.pedirNumero("1. Añadir producto" +
-                    "\n2. Mostrar inventario" +
-                    "\n3. Gestionar inventario" +
-                    "\n4. Salir");
+                    "\n2. Mostrar producto" +
+                    "\n3. Mostrar inventario" +
+                    "\n4. Gestionar inventario" +
+                    "\n5. Salir" +
+                    "\nInserte una opcion: ");
             switch (opcion) {
                 case 1:
                     addProducto();
                     break;
                 case 2:
-                    mostrarInventario();
+                    mostrarProductos();
                     break;
                 case 3:
-                    gestionarInventario();
+                    mostrarInventario();
                     break;
                 case 4:
+                    gestionarInventario();
+                    break;
+                case 5:
                     System.out.println("Saliendo ....");
+                    FicheroProducto.guardarProductos(productos);
+                    FicheroProducto.guardarInventario(inventario);
                     exit = true;
                     break;
                 default:
@@ -95,7 +108,21 @@ public class GestionInventario {
 
     }
 
+    public static void mostrarProductos() {
+        if (!productos.isEmpty()) {
+            for (Producto producto : productos) {
+                System.out.println(producto);
+            }
+        } else {
+            System.out.println("No existen productos");
+        }
+    }
+
     public static void mostrarInventario() {
+        if (inventario.isEmpty()) {
+            System.out.println("No existen inventario");
+            return;
+        }
         for(Producto producto: inventario.keySet()) {
             System.out.printf("%s - Cantidad en stock: %s\n", producto, inventario.get(producto));
         }
