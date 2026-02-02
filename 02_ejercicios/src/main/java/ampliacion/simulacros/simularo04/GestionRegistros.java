@@ -83,7 +83,9 @@ public class GestionRegistros {
 
     public static void mostrarRegistros() {
         for (int i = 0; i < registros.length; i++) {
-            System.out.println(registros[i]);
+            if (registros[i] != null) {
+                System.out.println(registros[i]);
+            }
         }
     }
 
@@ -119,6 +121,14 @@ public class GestionRegistros {
             }
         }
         return null;
+    }
+
+    public static void obtenerRegistroPorMes2(int month) {
+        for (int i = 0; i < registros.length; i++) {
+            if (registros[i].getFechaCreacion().getMonthValue() == month) {
+                System.out.println(registros[i]);
+            }
+        }
     }
 
     public static Registro obtenerRegistroEnRango (int min_year, int max_year) {
