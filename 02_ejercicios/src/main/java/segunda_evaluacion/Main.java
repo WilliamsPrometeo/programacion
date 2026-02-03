@@ -1,17 +1,11 @@
 package segunda_evaluacion;
 
-import ciudad.clases.Persona;
 import recursos.MyScanner;
 import recursos.Utilidades;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Main {
 
