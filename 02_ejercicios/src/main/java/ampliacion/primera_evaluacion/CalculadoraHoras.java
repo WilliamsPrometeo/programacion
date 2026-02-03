@@ -1,4 +1,4 @@
-package ampliacion;
+package ampliacion.primera_evaluacion;
 
 import recursos.MyScanner;
 
