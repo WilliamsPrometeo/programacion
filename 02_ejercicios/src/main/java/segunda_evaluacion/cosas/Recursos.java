@@ -1,4 +1,4 @@
-package segunda_evaluacion;
+package segunda_evaluacion.cosas;
 
 import java.util.List;
 

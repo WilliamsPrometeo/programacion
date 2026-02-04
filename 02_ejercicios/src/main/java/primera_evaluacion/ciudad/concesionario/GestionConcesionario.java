@@ -1,7 +1,6 @@
 package primera_evaluacion.ciudad.concesionario;
 
 import primera_evaluacion.ciudad.clases.Cliente;
-import ciudad.concesionario.clases.*;
 import primera_evaluacion.ciudad.clases.Persona;
 import primera_evaluacion.ciudad.concesionario.clases.*;
 import primera_evaluacion.ciudad.concesionario.enums.Marca;

@@ -1,4 +1,4 @@
-package segunda_evaluacion;
+package segunda_evaluacion.cosas;
 
 import recursos.MyScanner;
 import recursos.Utilidades;

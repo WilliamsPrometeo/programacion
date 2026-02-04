@@ -1,9 +1,11 @@
 package segunda_evaluacion.libreria;
 
+import recursos.MyLogger;
 import recursos.MyScanner;
 import recursos.Utilidades;
 import segunda_evaluacion.libreria.clases.Libro;
 import segunda_evaluacion.libreria.clases.enums.Genero;
+import segunda_evaluacion.libreria.exceptions.InvalidDateException;
 import segunda_evaluacion.libreria.persistencia.FicheroLibro;
 
 import java.io.File;
@@ -24,16 +26,21 @@ public class GestionLibreria {
     private static Map<Libro, Integer> stock;
 
     public static void main(String[] args) {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Iniciando programa");
         menu();
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Terminando programa");
     }
 
     public static void init() {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Inicializando recuperación de archivos");
         libros = FicheroLibro.recuperarLibros();
         stock = FicheroLibro.recuperarStock();
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Recuperación de archivos correctamente");
     }
 
     public static void menu() {
         init();
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Inicializando el menú");
         boolean exit;
         do {
             exit = false;
@@ -60,14 +67,12 @@ public class GestionLibreria {
                     break;
                 case 5:
                     System.out.println("Saliendo ....");
-                    FicheroLibro.guardarLibros(libros);
-                    FicheroLibro.guardarStock(stock);
+                    guardar();
                     exit = true;
                     break;
                 case 6:
                     System.out.println("Guardando ....");
-                    FicheroLibro.guardarLibros(libros);
-                    FicheroLibro.guardarStock(stock);
+                    guardar();
                     break;
                 default:
                     System.out.println("Opcion no valida!");
@@ -76,7 +81,15 @@ public class GestionLibreria {
         } while (!exit);
     }
 
+    private static void guardar() {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Guardando los datos en archivos");
+        FicheroLibro.guardarLibros(libros);
+        FicheroLibro.guardarStock(stock);
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Guardado exitosamente");
+    }
+
     public static void agregarLibro() {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Agregando libro");
         String isbn;
         do {
             isbn = sc.pideTexto("Introduce el ISBN (3 letras y 2 números): ").toUpperCase();
@@ -95,6 +108,7 @@ public class GestionLibreria {
 
         libros.add(libro);
         System.out.println("✅ El libro ha sido agregado exitosamente!");
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Libro agregado correctamente");
 
         int stock_libro = sc.pedirNumero("Introduce el stock que desea agregar: ");
         stock.put(libro, stock_libro);
@@ -109,10 +123,14 @@ public class GestionLibreria {
             try {
                 fecha = LocalDate.parse(fecha_string);
                 if (fecha.isAfter(LocalDate.now()) || fecha.getYear() < 1200) {
-                    System.out.println("La fecha tiene que estar entre el 1200 y el " + LocalDate.now().getYear());
-                    correcto = false;
+                    throw new InvalidDateException(fecha, 1200, LocalDate.now().getYear());
                 }
-            } catch (DateTimeParseException e) {
+            } catch (DateTimeParseException | InvalidDateException e) {
+                MyLogger.logError(
+                        GestionLibreria.class.getSimpleName(),
+                        "Error en la fecha",
+                        e
+                );
                 System.out.println(e.getMessage());
                 correcto = false;
             }
@@ -132,7 +150,7 @@ public class GestionLibreria {
     }
 
     public static void mostrarLibros() {
-
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Mostrando libros");
         if (!libros.isEmpty()) {
             for (Libro libro : libros) {
                 System.out.println(libro);
@@ -145,6 +163,7 @@ public class GestionLibreria {
     }
 
     public static void gestionarStock() {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Accediendo a la gestion del stock");
         String isbn = sc.pideTexto("Introduce el ISBN: ").toUpperCase();
         Libro libro = getLibro(isbn);
         if (libro != null) {
@@ -152,6 +171,7 @@ public class GestionLibreria {
             if (nuevo_stock > 0) {
                 stock.put(libro, nuevo_stock);
                 System.out.println("✅ Stock actualizado exitosamente!");
+                MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Stock actualizado correctamente");
             } else {
                 System.out.println("El stock no puede ser un valor negativo!");
             }
@@ -171,12 +191,14 @@ public class GestionLibreria {
     }
 
     public static void prestarLibro() {
+        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Inicializando prestamo");
         String isbn = sc.pideTexto("Introduce el ISBN: ").toUpperCase();
         Libro libro = getLibro(isbn);
         if (libro != null) {
             stock.put(libro, stock.get(libro) - 1);
             registrarPrestamo(libro);
             System.out.println("✅ Libro prestado exitosamente!");
+            MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Libro prestado correctamente");
         } else {
             System.out.println("❌ El libro no existe con el ISBN dado!");
         }
@@ -213,6 +235,7 @@ public class GestionLibreria {
         if (comprobarDirectorio(ruta)) {
             File archivo = new File(ruta + "prestamos.txt");
 
+            MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Inicilizando el registro del prestamo");
             try (FileWriter fw = new FileWriter(archivo, true)) {
 
                 fw.write("----- PRESTAMO -----\n");
@@ -223,7 +246,13 @@ public class GestionLibreria {
                 fw.write("\tAutor: " + libro.getAutor() + "\n");
                 fw.write("-----------------------");
 
+                MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Prestamo registrado correctamente");
             } catch (IOException e) {
+                MyLogger.logError(
+                        GestionLibreria.class.getSimpleName(),
+                        "Error en el registro del prestamo",
+                        e
+                );
                 System.out.println("Error al registrar el prestamo. " + e.getMessage());
             }
         } else {

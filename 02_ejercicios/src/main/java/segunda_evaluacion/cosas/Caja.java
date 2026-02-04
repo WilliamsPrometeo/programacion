@@ -1,4 +1,4 @@
-package segunda_evaluacion;
+package segunda_evaluacion.cosas;
 
 public class Caja <T extends Number>{
     private T atributo_generico;
