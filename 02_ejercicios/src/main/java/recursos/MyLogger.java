@@ -28,7 +28,7 @@ public class MyLogger {
                 bw.newLine();
 
                 if (e != null) {
-                    bw.write(e.toString());
+                    bw.write(e.getMessage());
                     bw.newLine();
                 }
 
