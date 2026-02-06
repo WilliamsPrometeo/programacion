@@ -64,6 +64,21 @@ public class Libro implements Serializable {
         this.fecha_publicacion = fecha_publicacion;
     }
 
+    public String toLineaTexto() {
+        return isbn + ";" + titulo + ";" + autor + ";" + genero.name() + ";" + fecha_publicacion.toString();
+    }
+
+    public static Libro fromLineaTexto(String linea) {
+        String[] partes = linea.split(";");
+        return new Libro(
+                partes[0],
+                partes[1],
+                partes[2],
+                Genero.valueOf(partes[3]),
+                LocalDate.parse(partes[4])
+        );
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");

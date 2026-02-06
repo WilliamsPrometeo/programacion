@@ -7,11 +7,13 @@ import segunda_evaluacion.libreria.clases.Libro;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FicheroLibro {
 
     private static final String NOMBRE_FICHERO = "libros.dat";
+    private static final String FICHERO_TEXTO = "libros.txt";
     private static final String STOCK = "stock.dat";
 
     public static void guardarLibros(ArrayList<Libro> libros) {
@@ -87,5 +89,31 @@ public class FicheroLibro {
             }
         }
         return stock;
+    }
+
+    public static void guardarLibros(List<Libro> libros) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FICHERO_TEXTO))) {
+            for (Libro libro : libros) {
+                bw.write(libro.toLineaTexto());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error guardando libros");
+        }
+    }
+
+    public static List<Libro> cargarLibros() {
+        List<Libro> libros = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(FICHERO_TEXTO))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                libros.add(Libro.fromLineaTexto(linea));
+            }
+        } catch (IOException e) {
+            System.out.println("Error cargando libros");
+        }
+
+        return libros;
     }
 }
