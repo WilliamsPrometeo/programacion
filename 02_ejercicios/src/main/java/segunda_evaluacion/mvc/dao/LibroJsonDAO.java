@@ -82,7 +82,7 @@ public class LibroJsonDAO {
         if (json.equals("[]") || json.isEmpty()) return libros;
 
         json = json.substring(1, json.length() - 1); // Quitamos [ ]
-        String[] objetos = json.split("\\}, \\{");
+        String[] objetos = json.split("\\},\\{");
         for (String objeto : objetos) {
             objeto = objeto.replace("{","").replace("}","");
             libros.add(jsonToLibro(objeto));

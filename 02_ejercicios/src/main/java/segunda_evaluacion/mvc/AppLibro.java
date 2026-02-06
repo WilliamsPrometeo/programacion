@@ -18,15 +18,15 @@ public class AppLibro {
     private static final LibroJsonDAO jsonDAO = new LibroJsonDAO();
 
     public static void main(String[] args) {
-//        MyLogger.logInfo(AppLibro.class.getSimpleName(),"Iniciando programa");
-//        menu();
-//        MyLogger.logInfo(AppLibro.class.getSimpleName(),"Terminando programa");
-        List<Libro> libros = jsonDAO.leerLibros();
-        libros.add(new Libro("OPK", "JSON", "Yo", Genero.TERROR, LocalDate.now()));
-        for (Libro libro : libros) {
-            System.out.println(libro);
-        }
-        jsonDAO.guardarLibros(libros);
+        MyLogger.logInfo(AppLibro.class.getSimpleName(),"Iniciando programa");
+        menu();
+        MyLogger.logInfo(AppLibro.class.getSimpleName(),"Terminando programa");
+//        List<Libro> libros = jsonDAO.leerLibros();
+//        libros.add(new Libro("OPK", "JSON", "Yo", Genero.TERROR, LocalDate.now()));
+//        for (Libro libro : libros) {
+//            System.out.println(libro);
+//        }
+//        jsonDAO.guardarLibros(libros);
     }
 
     public static void menu() {
