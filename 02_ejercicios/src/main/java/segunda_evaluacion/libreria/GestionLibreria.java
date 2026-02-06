@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GestionLibreria {
@@ -26,9 +27,16 @@ public class GestionLibreria {
     private static Map<Libro, Integer> stock;
 
     public static void main(String[] args) {
-        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Iniciando programa");
-        menu();
-        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Terminando programa");
+//        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Iniciando programa");
+//        menu();
+//        MyLogger.logInfo(GestionLibreria.class.getSimpleName(),"Terminando programa");
+        List<Libro> libros2 = FicheroLibro.cargarLibros();
+
+        for (Libro libro : libros2) {
+            System.out.println(libro);
+        }
+        libros2.add(new Libro("HTU45", "PROMETEO", "Yo", Genero.DRAMA, LocalDate.now()));
+        FicheroLibro.guardarLibros(libros2);
     }
 
     public static void init() {
