@@ -5,13 +5,14 @@ import segunda_evaluacion.mvc.dao.PrestamosDAO;
 import segunda_evaluacion.mvc.exceptions.InvalidException;
 import segunda_evaluacion.mvc.models.Libro;
 import segunda_evaluacion.mvc.models.enums.Genero;
+import segunda_evaluacion.mvc.repository.LibroRepository;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LibroService {
+public class LibroService implements LibroRepository {
 
     private ArrayList<Libro> libros;
     private Map<Libro, Integer> stock;
@@ -24,16 +25,19 @@ public class LibroService {
         stock = libroDAO.recuperarStock();
     }
 
+    @Override
     public Map<Libro, Integer> obtenerInventario() {
         return Map.copyOf(stock);
     }
 
+    @Override
     public void agregarLibro(String isbn, String titulo, String autor, Genero genero, LocalDate fecha, int stockInicial) {
         Libro libro = new Libro(isbn, titulo, autor, genero, fecha);
         libros.add(libro);
         stock.put(libro, stockInicial);
     }
 
+    @Override
     public void prestarLibro(String isbn) throws InvalidException {
         Libro libro = getLibro(isbn);
         if (libro == null){
@@ -47,6 +51,7 @@ public class LibroService {
         prestamosDAO.registrarPrestamo(libro);
     }
 
+    @Override
     public void actualizarStock(String isbn, int stock_nuevo) throws InvalidException {
         Libro libro = getLibro(isbn);
         if (libro == null){
@@ -58,11 +63,13 @@ public class LibroService {
         stock.put(libro, stock_nuevo);
     }
 
+    @Override
     public void guardar() {
         libroDAO.guardarLibros(libros);
         libroDAO.guardarStock(stock);
     }
 
+    @Override
     public Libro getLibro(String isbn){
         for (Libro libro : libros) {
             if (libro.getIsbn().equals(isbn)) {
@@ -72,6 +79,7 @@ public class LibroService {
         return null;
     }
 
+    @Override
     public boolean existeLibro(String isbn){
         return getLibro(isbn) != null;
     }
