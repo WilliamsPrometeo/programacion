@@ -9,7 +9,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println(MainApp.class.getResource(""));
+        System.out.println(MainApp.class.getResource("/segunda_evaluacion/javafx/view/libro-view.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/segunda_evaluacion/javafx/view/libro-view.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 400, 400);
