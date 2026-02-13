@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="segunda_evaluacion.javafx.controller.LibroController"
+      spacing="10"
+      alignment="CENTER">
+
+    <TextField fx:id="tituloField" promptText="Titulo"/>
+    <TextField fx:id="autorField" promptText="Autor"/>
+
+    <Button text="Añadir Libro" onAction="#agregarLibro"/>
+
+    <ListView fx:id="listaLibros"/>
+
+</VBox>
