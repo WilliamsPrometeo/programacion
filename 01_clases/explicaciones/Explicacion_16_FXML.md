@@ -170,6 +170,34 @@ Solo estructura visual.
 
 ---
 
+# RECURSOS NECESARIOS
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>21.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>21.0.2</version>
+        </dependency>
+    </dependencies>
+```
+```xml
+    <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+            <mainClass>
+                package.javafx.MainApp
+            </mainClass>
+        </configuration>
+    </plugin>
+```
+
 # ⚠️ Errores comunes al hacerlo a mano
 
 ❌ Ruta incorrecta en getResource()
