@@ -186,16 +186,29 @@ Solo estructura visual.
     </dependencies>
 ```
 ```xml
-    <plugin>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-maven-plugin</artifactId>
-        <version>0.0.8</version>
-        <configuration>
-            <mainClass>
-                package.javafx.MainApp
-            </mainClass>
-        </configuration>
-    </plugin>
+    <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <resources>
+        <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.fxml</include>
+            </includes>
+        </resource>
+    </resources>
+    <plugins>
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <configuration>
+                <mainClass>
+                    segunda_evaluacion.javafx.MainApp
+                </mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 # ⚠️ Errores comunes al hacerlo a mano
