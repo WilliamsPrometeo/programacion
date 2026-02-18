@@ -1,4 +1,4 @@
-package simulacros.clases;
+package simulacros.simulacro03.clases;
 
 public abstract class Persona {
     private String nombre;

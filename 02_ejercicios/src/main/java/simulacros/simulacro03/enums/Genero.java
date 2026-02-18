@@ -1,4 +1,4 @@
-package simulacros.enums;
+package simulacros.simulacro03.enums;
 
 public enum Genero {
     FICCION,

@@ -1,6 +1,6 @@
-package simulacros.clases;
+package simulacros.simulacro03.clases;
 
-import simulacros.enums.Genero;
+import simulacros.simulacro03.enums.Genero;
 
 public class Libro {
     private String titulo;

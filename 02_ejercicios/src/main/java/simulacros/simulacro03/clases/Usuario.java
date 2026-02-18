@@ -1,4 +1,4 @@
-package simulacros.clases;
+package simulacros.simulacro03.clases;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

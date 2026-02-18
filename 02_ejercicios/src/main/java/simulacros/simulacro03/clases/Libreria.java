@@ -1,8 +1,8 @@
-package simulacros.clases;
+package simulacros.simulacro03.clases;
 
 import recursos.MyScanner;
-import simulacros.enums.Genero;
-import simulacros.exception.UserNotFound;
+import simulacros.simulacro03.enums.Genero;
+import simulacros.simulacro03.exception.UserNotFound;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,7 +1,7 @@
-package simulacros;
+package simulacros.simulacro03;
 
 import recursos.MyScanner;
-import simulacros.clases.Libreria;
+import simulacros.simulacro03.clases.Libreria;
 
 public class Main {
 
