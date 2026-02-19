@@ -11,7 +11,13 @@ import java.util.Map;
 public interface ReservaRepository {
 
     Map<Reserva, TipoHabitacion> getReservas();
-    void addReserva(Reserva reserva);
+    void addReserva(Reserva reserva, TipoHabitacion tipoHabitacion);
+
+    Reserva getReserva(String codigo);
+    boolean eliminarReserva(String codigo);
+
+    void guardar();
+    void cargar();
 
     boolean reservaValida(String codigoReserva) throws InvalidReservaException;
     boolean fechaValida(LocalDate entrada, LocalDate salida) throws InvalidDateException;

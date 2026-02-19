@@ -1,5 +1,6 @@
 package simulacros.reservas.service;
 
+import simulacros.reservas.dao.ReservaDAO;
 import simulacros.reservas.exceptions.InvalidDateException;
 import simulacros.reservas.exceptions.InvalidReservaException;
 import simulacros.reservas.models.Reserva;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 public class ReservaService implements ReservaRepository {
     private static Map<Reserva, TipoHabitacion> reservas = new LinkedHashMap<>();
+    private final ReservaDAO dao = new ReservaDAO();
 
     @Override
     public Map<Reserva, TipoHabitacion> getReservas() {
@@ -19,8 +21,38 @@ public class ReservaService implements ReservaRepository {
     }
 
     @Override
-    public void addReserva(Reserva reserva) {
+    public void addReserva(Reserva reserva,TipoHabitacion tipoHabitacion) {
+        reservas.put(reserva, tipoHabitacion);
+    }
 
+    @Override
+    public Reserva getReserva(String codigo) {
+        for (Reserva reserva : reservas.keySet()) {
+            if (reserva.getCodigoReserva().equals(codigo)) {
+                return reserva;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean eliminarReserva(String codigo) {
+        Reserva reserva = getReserva(codigo);
+        if (reserva != null) {
+            reservas.remove(reserva);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void guardar() {
+        dao.guardar(reservas);
+    }
+
+    @Override
+    public void cargar() {
+        reservas = dao.cargar();
     }
 
     @Override
