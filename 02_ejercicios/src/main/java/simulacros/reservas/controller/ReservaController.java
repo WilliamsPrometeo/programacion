@@ -102,7 +102,7 @@ public class ReservaController {
         char opcion;
         do {
             correcto = true;
-            opcion = sc.pedirLetra("¿Desea guardar? (S/N: ");
+            opcion = sc.pedirLetra("¿Desea guardar? (S/N): ");
             switch (opcion) {
                 case 'S':
                 case 's':
@@ -125,7 +125,7 @@ public class ReservaController {
         char opcion;
         do {
             correcto = true;
-            opcion = sc.pedirLetra("¿Desea cargar? (S/N: ");
+            opcion = sc.pedirLetra("¿Desea cargar? (S/N): ");
             switch (opcion) {
                 case 'S':
                 case 's':
