@@ -2,23 +2,25 @@ package ampliacion.segunda_evaluacion;
 
 import ampliacion.segunda_evaluacion.enums.Genero;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Persona {
     private String dni;
     private  String nombre;
     private String apellido;
     private Genero genero;
-    private int genero2;
     private LocalDate fechaNacimiento;
+    private ArrayList<String> lista;
 
-    public Persona(String dni, String nombre, String apellido, Genero genero, int genero2, LocalDate fechaNacimiento) {
+    public Persona(String dni, String nombre, String apellido, Genero genero, LocalDate fechaNacimiento, ArrayList<String> lista) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
-        this.genero2 = genero2;
         this.fechaNacimiento = fechaNacimiento;
+        this.lista = lista;
     }
 
     public String getDni() {
@@ -61,12 +63,12 @@ public class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getGenero2() {
-        return genero2;
+    public ArrayList<String> getLista() {
+        return lista;
     }
 
-    public void setGenero2(int genero2) {
-        this.genero2 = genero2;
+    public void setLista(ArrayList<String> lista) {
+        this.lista = lista;
     }
 
     @Override
