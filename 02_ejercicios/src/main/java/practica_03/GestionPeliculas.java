@@ -115,7 +115,7 @@ public class GestionPeliculas {
                 fw.write("\tCódigo: " + pelicula.getCodigo() + "\n");
                 fw.write("\tTitulo: " + pelicula.getTitulo() + "\n");
                 fw.write("\tDirector: " + pelicula.getDirector() + "\n");
-                fw.write("-----------------------");
+                fw.write("-----------------------\n");
 
             } catch (IOException e) {
                 System.out.println("Error al registrar la visualización. " + e.getMessage());

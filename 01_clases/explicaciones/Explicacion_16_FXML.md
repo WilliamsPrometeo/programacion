@@ -186,16 +186,7 @@ Solo estructura visual.
     </dependencies>
 ```
 ```xml
-    <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <resources>
-        <resource>
-            <directory>src/main/java</directory>
-            <includes>
-                <include>**/*.fxml</include>
-            </includes>
-        </resource>
-    </resources>
+<build>
     <plugins>
         <plugin>
             <groupId>org.openjfx</groupId>
