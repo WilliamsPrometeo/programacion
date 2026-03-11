@@ -1,5 +1,11 @@
 package ampliacion.segunda_evaluacion.simulacros.simulacro_05.clases;
 
+/**
+ * Clase Moto - clase que extiende de Vehiculo
+ * @see Vehiculo
+ * @author Profesor - Williams
+ * @version 1.0
+ */
 public class Moto extends Vehiculo{
     private int cilindrada;
 

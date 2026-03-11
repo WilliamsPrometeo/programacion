@@ -17,7 +17,7 @@ public class Concesionario {
     private static Map<Vehiculo, Integer> stockVehiculos = new LinkedHashMap<>();
 
     public static void main(String[] args) {
-
+        Moto moto = new Moto("","","",0.0,1);
     }
 
     public boolean agregarVehiculo() {

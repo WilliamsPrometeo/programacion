@@ -1,5 +1,10 @@
 package ampliacion.segunda_evaluacion.simulacros.simulacro_05.clases;
 
+/**
+ * Clase abstracta Vehiculo
+ * @author Profesor - Williams
+ * @version 1.0
+ */
 public abstract class Vehiculo {
 
     private String matricula;
