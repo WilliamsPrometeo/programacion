@@ -68,7 +68,7 @@ Guarda todos los libros en un fichero de texto utilizando:
 Formato del fichero:
 
 ```
-codigo;titulo;autor;anio
+codigo;titulo;autor
 ```
 
 Ejemplo:
