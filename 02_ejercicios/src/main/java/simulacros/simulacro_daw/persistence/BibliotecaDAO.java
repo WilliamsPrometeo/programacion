@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class BibliotecaDAO {
 
     private final String RUTA = System.getProperty("user.home") + "/Desktop/DAW/Biblioteca";
-    private final File FILE = new File(RUTA + File.separator + "libros.dat");
+    private final File FILE = new File(RUTA + File.separator + "libros.txt");
 
-    public void guardar(ArrayList<Libro> libros) throws BibliotecaException {
+    public void guardar(ArrayList<Libro> libros) {
         if (comprobarDirectorio(RUTA)) {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE))) {
                 for (Libro libro : libros) {

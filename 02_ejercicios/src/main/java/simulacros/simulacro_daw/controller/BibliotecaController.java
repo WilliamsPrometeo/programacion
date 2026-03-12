@@ -1,11 +1,8 @@
 package simulacros.simulacro_daw.controller;
 
 import recursos.MyScanner;
-import simulacros.simulacro_daw.exceptions.BibliotecaException;
 import simulacros.simulacro_daw.models.Libro;
 import simulacros.simulacro_daw.service.BibliotecaService;
-
-import java.util.ArrayList;
 
 public class BibliotecaController {
 
@@ -38,15 +35,10 @@ public class BibliotecaController {
 
     public void cargar() {
         service.cargar();
-
     }
 
     public void guardar() {
-        try {
-            service.guardar();
-        } catch (BibliotecaException e) {
-            System.out.println(e.getMessage());
-        }
+        service.guardar();
     }
 
     private String getCodigo() {

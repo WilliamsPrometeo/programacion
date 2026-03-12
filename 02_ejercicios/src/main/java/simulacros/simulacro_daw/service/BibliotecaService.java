@@ -37,7 +37,7 @@ public class BibliotecaService {
         libros = dao.cargar();
     }
 
-    public void guardar() throws BibliotecaException {
+    public void guardar() {
         dao.guardar(libros);
     }
 }
