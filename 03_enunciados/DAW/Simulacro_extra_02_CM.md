@@ -69,7 +69,7 @@ ArrayList<Cliente> clientes
 
 # Métodos obligatorios
 
-## `agregarCliente(Cliente cliente)`
+## `agregarCliente()`
 
 Añade un cliente al sistema.
 
@@ -83,7 +83,7 @@ Muestra todos los clientes almacenados en el `ArrayList`.
 
 ---
 
-## `guardarClientes(String ruta)`
+## `guardarClientes()`
 
 Guarda todos los clientes en un fichero de texto.
 
