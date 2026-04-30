@@ -3,6 +3,7 @@ package ampliacion.tercera_evaluacion.serializables;
 import recursos.Utilidades;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class LibroDAO {
 
@@ -23,6 +24,28 @@ public class LibroDAO {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public void guardarLista(ArrayList<Libro> libros) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE))) {
+            oos.writeObject(libros);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public ArrayList<Libro> cargarLista() {
+        ArrayList<Libro> libros = new ArrayList<>();
+
+        if (FILE.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE))) {
+                libros = (ArrayList<Libro>) ois.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return libros;
     }
 
     public Libro cargar () {
